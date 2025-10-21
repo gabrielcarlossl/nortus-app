@@ -83,8 +83,15 @@ export default function LoginPage() {
       }, 500);
     } catch (error) {
       // Feedback visual de erro
-      const errorMessage =
-        error instanceof Error ? error.message : 'Verifique suas credenciais e tente novamente.';
+      let errorMessage = 'Verifique suas credenciais e tente novamente.';
+
+      if (error && typeof error === 'object' && 'issues' in error) {
+        const zodError = error as { issues: Array<{ message: string }> };
+        errorMessage = zodError.issues[0]?.message || errorMessage;
+      } else if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+
       toast.error('Erro ao realizar login', {
         description: errorMessage,
       });
