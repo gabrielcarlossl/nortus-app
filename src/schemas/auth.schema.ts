@@ -10,7 +10,9 @@ export const loginSchema = z.object({
   email: z
     .string()
     .min(1, 'O email é obrigatório')
-    .email('Por favor, insira um email válido'),
+    .refine((val) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val), {
+      message: 'Por favor, insira um email válido',
+    }),
   password: z
     .string()
     .min(1, 'A senha é obrigatória')
