@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { Edit2, Eye, Search } from 'lucide-react';
+import { Badge } from '@/components/Badge';
 import type { Ticket } from '@/services/tickets.service';
 
 interface TicketsTableProps {
@@ -61,24 +62,24 @@ export function TicketsTable({ tickets, statusOptions, priorities }: TicketsTabl
     setCurrentPage(1);
   };
 
-  // Badge de prioridade
-  const getPriorityBadge = (priority: string) => {
-    const colors: Record<string, string> = {
-      Urgente: 'bg-red-500/20 text-red-400 border-red-500/30',
-      Média: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
-      Baixa: 'bg-gray-500/20 text-gray-400 border-gray-500/30',
+  // Mapeia prioridade para cor do badge
+  const getPriorityVariant = (priority: string): 'red' | 'blue' | 'gray' => {
+    const variants: Record<string, 'red' | 'blue' | 'gray'> = {
+      Urgente: 'red',
+      Média: 'blue',
+      Baixa: 'gray',
     };
-    return colors[priority] || colors.Baixa;
+    return variants[priority] || 'gray';
   };
 
-  // Badge de status
-  const getStatusBadge = (status: string) => {
-    const colors: Record<string, string> = {
-      Aberto: 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30',
-      'Em andamento': 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
-      Fechado: 'bg-green-500/20 text-green-400 border-green-500/30',
+  // Mapeia status para cor do badge
+  const getStatusVariant = (status: string): 'cyan' | 'yellow' | 'green' => {
+    const variants: Record<string, 'cyan' | 'yellow' | 'green'> = {
+      Aberto: 'cyan',
+      'Em andamento': 'yellow',
+      Fechado: 'green',
     };
-    return colors[status] || colors.Aberto;
+    return variants[status] || 'cyan';
   };
 
   // Formata data
@@ -192,26 +193,14 @@ export function TicketsTable({ tickets, statusOptions, priorities }: TicketsTabl
                   <tr key={ticket.id} className="hover:bg-[#0f1623]/50 transition-colors">
                     <td className="px-6 py-4 text-sm font-mono text-gray-300">{ticket.id}</td>
                     <td className="px-6 py-4">
-                      <span
-                        className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border ${getPriorityBadge(
-                          ticket.priority
-                        )}`}
-                      >
-                        {ticket.priority}
-                      </span>
+                      <Badge text={ticket.priority} variant={getPriorityVariant(ticket.priority)} />
                     </td>
                     <td className="px-6 py-4 text-sm text-white">{ticket.client}</td>
                     <td className="px-6 py-4 text-sm text-gray-300 max-w-xs truncate">
                       {ticket.subject}
                     </td>
                     <td className="px-6 py-4">
-                      <span
-                        className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border ${getStatusBadge(
-                          ticket.status
-                        )}`}
-                      >
-                        {ticket.status}
-                      </span>
+                      <Badge text={ticket.status} variant={getStatusVariant(ticket.status)} />
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-400">
                       {formatDate(ticket.createdAt)}
