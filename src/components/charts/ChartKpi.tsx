@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { ApexOptions } from 'apexcharts';
 import { ApexChart } from './ApexChart';
+import { getDashboardData, type DashboardData } from '@/services/dashboard.service';
 
 /**
  * @description Tipos de KPI disponíveis
@@ -10,51 +11,61 @@ import { ApexChart } from './ApexChart';
 type KpiType = 'arpu' | 'conversao' | 'churn' | 'retencao';
 
 /**
- * @description Dados mockados para cada KPI
- */
-const kpiData = {
-  arpu: {
-    label: 'ARPU',
-    data: [
-      120000, 135000, 145000, 138000, 152000, 168000, 175000, 182000, 190000, 198000, 210000,
-      220000,
-    ],
-  },
-  conversao: {
-    label: 'Conversão',
-    data: [55, 58, 62, 65, 63, 68, 72, 70, 75, 78, 82, 85],
-  },
-  churn: {
-    label: 'Churn',
-    data: [4.5, 4.2, 3.8, 3.5, 3.2, 3.0, 2.8, 2.5, 2.3, 2.1, 1.8, 1.5],
-  },
-  retencao: {
-    label: 'Retenção',
-    data: [75, 78, 80, 82, 84, 86, 88, 89, 90, 91, 92, 93],
-  },
-};
-
-/**
  * @description Componente de gráfico de KPIs
  * Exibe gráfico de área com dados de métricas
  */
 export function ChartKpi() {
   const [selectedKpi, setSelectedKpi] = useState<KpiType>('arpu');
+  const [dashboardData, setDashboardData] = useState<DashboardData | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const months = [
-    'Jan',
-    'Fev',
-    'Mar',
-    'Abr',
-    'Mai',
-    'Jun',
-    'Jul',
-    'Ago',
-    'Set',
-    'Out',
-    'Nov',
-    'Dez',
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const data = await getDashboardData();
+        setDashboardData(data);
+      } catch (error) {
+        console.error('Erro ao carregar dados do dashboard:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading || !dashboardData) {
+    return (
+      <div className="bg-[#1a2332] rounded-xl p-6 border border-gray-800">
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-700 rounded w-48 mb-4"></div>
+          <div className="h-64 bg-gray-700 rounded"></div>
+        </div>
+      </div>
+    );
+  }
+
+  const kpiData = {
+    arpu: {
+      label: 'ARPU',
+      data: dashboardData.kpisTrend.arpuTrend.data,
+    },
+    conversao: {
+      label: 'Conversão',
+      data: dashboardData.kpisTrend.conversionTrend.data,
+    },
+    churn: {
+      label: 'Churn',
+      data: dashboardData.kpisTrend.churnTrend.data,
+    },
+    retencao: {
+      label: 'Retenção',
+      data: dashboardData.kpisTrend.retentionTrend.data,
+    },
+  };
+
+  const months = dashboardData.kpisTrend.labels;
 
   const options: ApexOptions = {
     chart: {
@@ -203,14 +214,14 @@ export function ChartKpi() {
 
   return (
     <div className="bg-[#1a2332] rounded-xl p-6 border border-gray-800">
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col gap-2 sm:flex-row items-center justify-between mb-6">
         <h3 className="text-xl font-semibold text-white">Evolução dos KPI&apos;s</h3>
-        <div className="flex items-center space-x-2">
+        <div className="flex flex-wrap sm:flex-nowrap items-center gap-2">
           {buttons.map(button => (
             <button
               key={button.key}
               onClick={() => setSelectedKpi(button.key)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer ${
                 selectedKpi === button.key
                   ? 'bg-cyan-500 text-white'
                   : 'bg-[#0f1629] text-gray-400 hover:bg-[#1e293b] hover:text-white'
