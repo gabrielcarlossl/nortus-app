@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Plus, Ticket } from 'lucide-react';
+import { Plus, Ticket, MessageCircle, CheckSquare, Clock } from 'lucide-react';
 import { TicketsTable } from '@/components/TicketsTable';
 import { NewTicketModal } from '@/components/NewTicketModal';
 import { TicketSummaryCard } from '@/components/TicketSummaryCard';
@@ -99,19 +99,19 @@ export default function TicketsPage() {
         <TicketSummaryCard
           title="Em Andamento"
           value={data.resumo.inProgress}
-          icon={Ticket}
+          icon={MessageCircle}
           iconColor="yellow"
         />
         <TicketSummaryCard
           title="Resolvidos Hoje"
           value={data.resumo.solved}
-          icon={Ticket}
+          icon={CheckSquare}
           iconColor="green"
         />
         <TicketSummaryCard
           title="Tempo Médio"
           value={`${data.resumo.timeAverageHours}h`}
-          icon={Ticket}
+          icon={Clock}
           iconColor="blue"
         />
       </div>
