@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { getPlanData } from '@/services/plan.service';
 import { PlanData, PlanIndicator, AdditionalCoverage } from '@/types';
 import PlanCard from '@/components/PlanCard';
+import RangeSlider from '@/components/RangeSlider';
+import PlanIndicatorCard from '@/components/PlanIndicatorCard';
 
 /**
  * @fileoverview Componente da página do Simulador de Planos de Seguro
@@ -91,9 +93,6 @@ import PlanCard from '@/components/PlanCard';
  * - vehicleValue: Valor do veículo (R$ 10.000 - R$ 500.000)
  * - clientAge: Idade do cliente (18 - 90 anos)
  * - additionalCoverages: Array de coberturas adicionais com estado habilitado/desabilitado
- *
- * @author Loomi Platform
- * @version 1.0.0
  */
 export default function SimulatorPage() {
   const [planData, setPlanData] = useState<PlanData | null>(null);
@@ -350,60 +349,27 @@ export default function SimulatorPage() {
           </div>
 
           {/* Vehicle Value Slider */}
-          <div className="bg-[#1a2332] rounded-xl p-6 border border-gray-800">
-            <div className="flex justify-between items-center mb-4">
-              <label className="text-white font-medium">Valor do veículo:</label>
-              <span className="text-white font-semibold">{formatVehicleValue(vehicleValue)}</span>
-            </div>
-
-            <input
-              type="range"
-              min="10000"
-              max="500000"
-              step="1000"
-              value={vehicleValue}
-              onChange={e => setVehicleValue(Number(e.target.value))}
-              className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-blue-500"
-              style={{
-                background: `linear-gradient(to right, #3b82f6 0%, #3b82f6 ${
-                  ((vehicleValue - 10000) / (500000 - 10000)) * 100
-                }%, #374151 ${((vehicleValue - 10000) / (500000 - 10000)) * 100}%, #374151 100%)`,
-              }}
-            />
-
-            <div className="flex justify-between mt-2">
-              <span className="text-xs text-gray-400">R$ 10.000</span>
-              <span className="text-xs text-gray-400">R$ 500.000</span>
-            </div>
-          </div>
+          <RangeSlider
+            label="Valor do veículo:"
+            value={vehicleValue}
+            min={10000}
+            max={500000}
+            step={1000}
+            formatValue={formatVehicleValue}
+            formatLabel={formatVehicleValue}
+            onChange={setVehicleValue}
+          />
 
           {/* Client Age Slider */}
-          <div className="bg-[#1a2332] rounded-xl p-6 border border-gray-800">
-            <div className="flex justify-between items-center mb-4">
-              <label className="text-white font-medium">Idade do Cliente:</label>
-              <span className="text-white font-semibold">{clientAge} anos</span>
-            </div>
-
-            <input
-              type="range"
-              min="18"
-              max="90"
-              step="1"
-              value={clientAge}
-              onChange={e => setClientAge(Number(e.target.value))}
-              className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-blue-500"
-              style={{
-                background: `linear-gradient(to right, #3b82f6 0%, #3b82f6 ${
-                  ((clientAge - 18) / (90 - 18)) * 100
-                }%, #374151 ${((clientAge - 18) / (90 - 18)) * 100}%, #374151 100%)`,
-              }}
-            />
-
-            <div className="flex justify-between mt-2">
-              <span className="text-xs text-gray-400">18 anos</span>
-              <span className="text-xs text-gray-400">90 anos</span>
-            </div>
-          </div>
+          <RangeSlider
+            label="Idade do Cliente:"
+            value={clientAge}
+            min={18}
+            max={90}
+            step={1}
+            suffix="anos"
+            onChange={setClientAge}
+          />
 
           {/* Additional Coverages */}
           <div className="bg-[#1a2332] rounded-xl p-6 border border-gray-800">
@@ -455,61 +421,18 @@ export default function SimulatorPage() {
           {/* Indicators */}
           <div className="bg-[#1a2332] rounded-xl p-6 border border-gray-800">
             <h2 className="text-xl font-semibold text-white mb-6">Indicadores</h2>
-
             <div className="space-y-4">
               {planData.plansIndicators.map(plan => {
                 const totalPrice = calculateTotalPrice(plan);
-
                 return (
-                  <div
+                  <PlanIndicatorCard
                     key={plan.name}
-                    className={`p-4 rounded-lg border ${
-                      selectedPlan === plan.name
-                        ? 'border-blue-500 bg-[#1e2a3d]'
-                        : 'border-gray-700 bg-[#141c2a]'
-                    }`}
-                  >
-                    <div className="flex justify-between items-start mb-3">
-                      <h3 className="text-lg font-semibold text-white">{plan.name}</h3>
-                      <div className="text-right">
-                        <div className="text-xl font-bold text-white">
-                          {formatCurrency(totalPrice)}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex gap-4 text-sm">
-                      <div>
-                        <span className="text-gray-400">Conversão: </span>
-                        <span
-                          className="font-medium"
-                          style={{
-                            color:
-                              plan.conversion >= 50
-                                ? '#4ade80'
-                                : plan.conversion >= 30
-                                  ? '#fbbf24'
-                                  : '#f87171',
-                          }}
-                        >
-                          {plan.conversion}%
-                        </span>
-                      </div>
-
-                      <div>
-                        <span className="text-gray-400">ROI: </span>
-                        <span
-                          className="font-medium"
-                          style={{
-                            color:
-                              plan.roi >= 120 ? '#4ade80' : plan.roi >= 80 ? '#fbbf24' : '#f87171',
-                          }}
-                        >
-                          {plan.roi}%
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+                    planName={plan.name}
+                    totalPrice={formatCurrency(totalPrice)}
+                    conversion={plan.conversion}
+                    roi={plan.roi}
+                    isSelected={selectedPlan === plan.name}
+                  />
                 );
               })}
             </div>
