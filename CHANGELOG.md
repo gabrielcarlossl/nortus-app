@@ -1,3 +1,16 @@
+# [1.1.0](https://github.com/gabrielcarlossl/loomi/compare/v1.0.0...v1.1.0) (2025-10-22)
+
+### Features
+
+- add ChartKpi component for KPI visualization in dashboard ([6664252](https://github.com/gabrielcarlossl/loomi/commit/6664252d744c8e2b9811e315862436e6cbfb0d18))
+- add ChartSegment component and integrate ApexChart for segment visualization ([31c3a02](https://github.com/gabrielcarlossl/loomi/commit/31c3a02d3123c1704780e61e539570586d6a4095))
+- add ClientMap component with dynamic import to handle SSR issues ([f5e425c](https://github.com/gabrielcarlossl/loomi/commit/f5e425c6ef6fba7b028ccc70f4b0909bf595b6b3))
+- add dynamic ApexChart component to handle SSR issues and loading state ([bc0a34b](https://github.com/gabrielcarlossl/loomi/commit/bc0a34b5b65698625e131a5bd99c168011d56b4a))
+- add MapLocation and MapData interfaces for client map types ([a8764c2](https://github.com/gabrielcarlossl/loomi/commit/a8764c2645ece18ec100d7541f61d27ad9fed8c2))
+- implement getMapData function to fetch map location data ([64dfe32](https://github.com/gabrielcarlossl/loomi/commit/64dfe32e05f9059a23996b2a2aec70d70f076a06))
+- integrate ClientMap component to display customer map in dashboard ([47adec7](https://github.com/gabrielcarlossl/loomi/commit/47adec7bf73c851e4935229e76e06db50d68d20e))
+- update package dependencies and add Leaflet map component with custom markers ([88be1bb](https://github.com/gabrielcarlossl/loomi/commit/88be1bb754fe89b165eb56c29d5357878da4dc84))
+
 # 1.0.0 (2025-10-22)
 
 ### Bug Fixes
