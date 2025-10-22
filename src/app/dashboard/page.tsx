@@ -3,6 +3,7 @@
 import { useAppSelector } from '@/store/hooks';
 import { TrendingUp, Users, Activity, DollarSign } from 'lucide-react';
 import { ChartKpi } from '@/components/charts/ChartKpi';
+import { ChartSegment } from '@/components/charts/ChartSegment';
 
 /**
  * @description Página principal do Dashboard
@@ -76,7 +77,7 @@ export default function DashboardPage() {
       {/* Gráfico de KPIs */}
       <ChartKpi />
 
-      {/* Placeholder para outros gráficos */}
+      {/* Gráficos secundários */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-[#1a2332] rounded-xl p-6 border border-gray-800">
           <h3 className="text-xl font-semibold text-white mb-4">Mapa de clientes por região</h3>
@@ -85,12 +86,8 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        <div className="bg-[#1a2332] rounded-xl p-6 border border-gray-800">
-          <h3 className="text-xl font-semibold text-white mb-4">Mapa de Impacto por Segmento</h3>
-          <div className="h-64 flex items-center justify-center text-gray-500">
-            <p>Gráfico de donut será implementado em breve</p>
-          </div>
-        </div>
+        {/* Gráfico de Segmentos */}
+        <ChartSegment />
       </div>
 
       {/* Atividades Recentes */}

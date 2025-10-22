@@ -1,18 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import dynamic from 'next/dynamic';
 import type { ApexOptions } from 'apexcharts';
-
-// Importação dinâmica do ApexCharts para evitar problemas de SSR
-const Chart = dynamic(() => import('react-apexcharts'), {
-  ssr: false,
-  loading: () => (
-    <div className="h-full flex items-center justify-center">
-      <div className="animate-pulse text-gray-500">Carregando gráfico...</div>
-    </div>
-  ),
-});
+import { ApexChart } from './ApexChart';
 
 /**
  * @description Tipos de KPI disponíveis
@@ -213,7 +203,6 @@ export function ChartKpi() {
 
   return (
     <div className="bg-[#1a2332] rounded-xl p-6 border border-gray-800">
-      {/* Header com título e botões */}
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-semibold text-white">Evolução dos KPI&apos;s</h3>
         <div className="flex items-center space-x-2">
@@ -233,7 +222,7 @@ export function ChartKpi() {
         </div>
       </div>
       <div className="h-[350px]">
-        <Chart options={options} series={series} type="area" height="100%" width="100%" />
+        <ApexChart options={options} series={series} type="area" height="100%" width="100%" />
       </div>
       <div className="mt-4 text-center">
         <p className="text-gray-400 text-sm">Valor atual</p>
