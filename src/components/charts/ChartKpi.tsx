@@ -214,9 +214,9 @@ export function ChartKpi() {
 
   return (
     <div className="bg-[#1a2332] rounded-xl p-6 border border-gray-800">
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col gap-2 sm:flex-row items-center justify-between mb-6">
         <h3 className="text-xl font-semibold text-white">Evolução dos KPI&apos;s</h3>
-        <div className="flex items-center space-x-2">
+        <div className="flex flex-wrap sm:flex-nowrap items-center gap-2">
           {buttons.map(button => (
             <button
               key={button.key}
