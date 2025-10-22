@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/gabrielcarlossl/loomi/compare/v1.2.0...v1.3.0) (2025-10-22)
+
+### Features
+
+- add jest configuration and update package.json for testing ([0aa4217](https://github.com/gabrielcarlossl/loomi/commit/0aa4217d65e891e61ccfe8bbac533a03991bf06c))
+- add logo and favicon ([caf756a](https://github.com/gabrielcarlossl/loomi/commit/caf756a3e384529f4c5903a51cf3f1f314dffaa2))
+
 # [1.2.0](https://github.com/gabrielcarlossl/loomi/compare/v1.1.0...v1.2.0) (2025-10-22)
 
 ### Features
