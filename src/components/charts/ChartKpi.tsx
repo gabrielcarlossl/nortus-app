@@ -221,7 +221,7 @@ export function ChartKpi() {
             <button
               key={button.key}
               onClick={() => setSelectedKpi(button.key)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer ${
                 selectedKpi === button.key
                   ? 'bg-cyan-500 text-white'
                   : 'bg-[#0f1629] text-gray-400 hover:bg-[#1e293b] hover:text-white'

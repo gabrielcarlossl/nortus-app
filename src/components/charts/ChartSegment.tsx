@@ -163,7 +163,7 @@ export function ChartSegment() {
             <button
               key={segment.nome}
               onClick={() => toggleSegment(segment.nome)}
-              className={`flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+              className={`flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer ${
                 isSelected
                   ? 'bg-[#0f1629] text-white border border-gray-700'
                   : 'bg-transparent text-gray-500 border border-gray-800 hover:border-gray-600'
@@ -181,7 +181,7 @@ export function ChartSegment() {
         })}
       </div>
       <div className="flex justify-center">
-        <button className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-200">
+        <button className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-200 cursor-pointer">
           Analisar segmentos
         </button>
       </div>

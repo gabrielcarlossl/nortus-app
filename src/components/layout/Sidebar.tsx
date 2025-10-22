@@ -130,7 +130,7 @@ export function Sidebar() {
             </button>
             <button
               onClick={handleLogout}
-              className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-red-600 hover:text-white transition-all duration-200 w-full"
+              className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-red-600 hover:text-white transition-all duration-200 w-full cursor-pointer"
             >
               <LogOut size={20} />
               <span className="font-medium">Sair</span>

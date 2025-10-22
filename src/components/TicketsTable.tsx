@@ -241,7 +241,7 @@ export function TicketsTable({ tickets, statusOptions, priorities }: TicketsTabl
               <button
                 onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                 disabled={currentPage === 1}
-                className="px-4 py-2 bg-[#0f1623] border border-gray-700 rounded-lg text-white hover:bg-[#151f30] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-2 bg-[#0f1623] border border-gray-700 rounded-lg text-white hover:bg-[#151f30] transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
               >
                 Anterior
               </button>
@@ -251,7 +251,7 @@ export function TicketsTable({ tickets, statusOptions, priorities }: TicketsTabl
               <button
                 onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                 disabled={currentPage === totalPages}
-                className="px-4 py-2 bg-[#0f1623] border border-gray-700 rounded-lg text-white hover:bg-[#151f30] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-2 bg-[#0f1623] border border-gray-700 rounded-lg text-white hover:bg-[#151f30] transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
               >
                 Próxima
               </button>
