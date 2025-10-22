@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { getPlanData } from '@/services/plan.service';
 import { PlanData, PlanIndicator, AdditionalCoverage } from '@/types';
+import PlanCard from '@/components/PlanCard';
 
 /**
  * @fileoverview Componente da página do Simulador de Planos de Seguro
@@ -334,31 +335,15 @@ export default function SimulatorPage() {
               {planData.plansIndicators.map(plan => {
                 const adjustedPrice = getAdjustedPlanPrice(plan);
                 return (
-                  <button
+                  <PlanCard
                     key={plan.name}
+                    title={plan.name}
+                    price={formatCurrency(adjustedPrice)}
+                    priceLabel="Por mês"
+                    isRecommended={plan.name === 'Premium'}
+                    isSelected={selectedPlan === plan.name}
                     onClick={() => setSelectedPlan(plan.name)}
-                    className={`relative p-6 rounded-lg border-2 transition-all cursor-pointer hover:scale-105 ${
-                      selectedPlan === plan.name
-                        ? 'border-blue-500 bg-[#1e2a3d]'
-                        : 'border-gray-700 bg-[#141c2a] hover:border-gray-600'
-                    }`}
-                  >
-                    <div className="flex justify-between items-start mb-4">
-                      <span className="text-sm font-medium text-gray-300">{plan.name}</span>
-                      {plan.name === 'Premium' && (
-                        <span className="px-2 py-1 text-xs font-medium bg-cyan-500 text-white rounded">
-                          Recomendado
-                        </span>
-                      )}
-                    </div>
-
-                    <div className="text-left">
-                      <div className="text-3xl font-bold text-white mb-1">
-                        {formatCurrency(adjustedPrice)}
-                      </div>
-                      <div className="text-sm text-gray-400">Por mês</div>
-                    </div>
-                  </button>
+                  />
                 );
               })}
             </div>
