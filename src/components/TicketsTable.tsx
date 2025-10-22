@@ -241,7 +241,7 @@ export function TicketsTable({
 
         {/* Paginação */}
         {filteredTickets.length > 0 && (
-          <div className="px-6 py-4 border-t border-gray-800 flex items-center justify-between">
+          <div className="px-6 py-4 border-t border-gray-800 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm text-gray-400">
               Mostrando {(currentPage - 1) * itemsPerPage + 1} a{' '}
               {Math.min(currentPage * itemsPerPage, filteredTickets.length)} de{' '}
