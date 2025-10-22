@@ -15,7 +15,7 @@ export function Header() {
       <div className="h-full px-6 flex items-center justify-between">
         {/* Título da Página */}
         <div>
-          <h2 className="text-xl font-semibold text-white">Dashboard</h2>
+          <h2 className="text-xl font-semibold text-white pl-12 lg:pl-0">Dashboard</h2>
         </div>
 
         {/* Actions */}
