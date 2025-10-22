@@ -7,6 +7,7 @@ import { ChartKpi } from '@/components/charts/ChartKpi';
 import { ChartSegment } from '@/components/charts/ChartSegment';
 import { ClientMap } from '@/components/charts/ClientMap';
 import { ActivityItem } from '@/components/ActivityItem';
+import { KpiCard } from '@/components/KpiCard';
 import { getDashboardData, type DashboardData } from '@/services/dashboard.service';
 
 /**
@@ -40,28 +41,30 @@ export default function DashboardPage() {
           title: 'ARPU',
           value: `R$ ${dashboardData.kpisResume.arpu.valor.toFixed(2)}`,
           change: `${dashboardData.kpisResume.arpu.variacao > 0 ? '+' : ''}${dashboardData.kpisResume.arpu.variacao}% no período`,
-          trend: dashboardData.kpisResume.arpu.variacao > 0 ? 'up' : 'down',
+          trend: (dashboardData.kpisResume.arpu.variacao > 0 ? 'up' : 'down') as 'up' | 'down',
           icon: <DollarSign className="text-blue-500" size={24} />,
         },
         {
           title: 'Conversão IA',
           value: `${dashboardData.kpisResume.conversion.valor}%`,
           change: `${dashboardData.kpisResume.conversion.variacao > 0 ? '+' : ''}${dashboardData.kpisResume.conversion.variacao}% no período`,
-          trend: dashboardData.kpisResume.conversion.variacao > 0 ? 'up' : 'down',
+          trend: (dashboardData.kpisResume.conversion.variacao > 0 ? 'up' : 'down') as
+            | 'up'
+            | 'down',
           icon: <TrendingUp className="text-green-500" size={24} />,
         },
         {
           title: 'Retenção',
           value: `${dashboardData.kpisResume.retention.valor}%`,
           change: `${dashboardData.kpisResume.retention.variacao > 0 ? '+' : ''}${dashboardData.kpisResume.retention.variacao}% no período`,
-          trend: dashboardData.kpisResume.retention.variacao > 0 ? 'up' : 'down',
+          trend: (dashboardData.kpisResume.retention.variacao > 0 ? 'up' : 'down') as 'up' | 'down',
           icon: <Users className="text-cyan-500" size={24} />,
         },
         {
           title: 'Taxa de Churn',
           value: `${dashboardData.kpisResume.churn.valor}%`,
           change: `${dashboardData.kpisResume.churn.variacao > 0 ? '+' : ''}${dashboardData.kpisResume.churn.variacao}% no período`,
-          trend: dashboardData.kpisResume.churn.variacao < 0 ? 'up' : 'down',
+          trend: (dashboardData.kpisResume.churn.variacao < 0 ? 'up' : 'down') as 'up' | 'down',
           icon: <Activity className="text-red-500" size={24} />,
         },
       ]
@@ -84,29 +87,25 @@ export default function DashboardPage() {
         {loading
           ? // Loading skeleton
             Array.from({ length: 4 }).map((_, index) => (
-              <div
+              <KpiCard
                 key={index}
-                className="bg-[#1a2332] rounded-xl p-6 border border-gray-800 animate-pulse"
-              >
-                <div className="h-4 bg-gray-700 rounded w-24 mb-4"></div>
-                <div className="h-8 bg-gray-700 rounded w-32 mb-2"></div>
-                <div className="h-4 bg-gray-700 rounded w-28"></div>
-              </div>
+                title=""
+                value=""
+                change=""
+                trend="up"
+                icon={<></>}
+                loading={true}
+              />
             ))
           : stats.map((stat, index) => (
-              <div
+              <KpiCard
                 key={index}
-                className="bg-[#1a2332] rounded-xl p-6 border border-gray-800 hover:border-blue-500/50 transition-all duration-200"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-gray-400 text-sm font-medium">{stat.title}</h3>
-                  {stat.icon}
-                </div>
-                <p className="text-2xl font-bold text-white mb-2">{stat.value}</p>
-                <p className={`text-sm ${stat.trend === 'up' ? 'text-green-500' : 'text-red-500'}`}>
-                  {stat.change}
-                </p>
-              </div>
+                title={stat.title}
+                value={stat.value}
+                change={stat.change}
+                trend={stat.trend}
+                icon={stat.icon}
+              />
             ))}
       </div>
 
