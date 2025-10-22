@@ -5,6 +5,7 @@ import { TrendingUp, Users, Activity, DollarSign } from 'lucide-react';
 import { ChartKpi } from '@/components/charts/ChartKpi';
 import { ChartSegment } from '@/components/charts/ChartSegment';
 import { ClientMap } from '@/components/charts/ClientMap';
+import { ActivityItem } from '@/components/ActivityItem';
 
 /**
  * @description Página principal do Dashboard
@@ -95,26 +96,27 @@ export default function DashboardPage() {
       <div className="bg-[#1a2332] rounded-xl p-6 border border-gray-800">
         <h3 className="text-xl font-semibold text-white mb-4">Atividades Recentes</h3>
         <div className="space-y-4">
-          <div className="flex items-center space-x-4 py-3 border-b border-gray-800">
-            <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white">
-              <Users size={20} />
-            </div>
-            <div className="flex-1">
-              <p className="text-white font-medium">Novo cliente cadastrado</p>
-              <p className="text-sm text-gray-400">Ricardo Leite se cadastrou na plataforma</p>
-            </div>
-            <span className="text-xs text-gray-500">Há 2 horas</span>
-          </div>
-          <div className="flex items-center space-x-4 py-3 border-b border-gray-800">
-            <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white">
-              <TrendingUp size={20} />
-            </div>
-            <div className="flex-1">
-              <p className="text-white font-medium">Meta de conversão atingida</p>
-              <p className="text-sm text-gray-400">Você atingiu 100% da meta mensal</p>
-            </div>
-            <span className="text-xs text-gray-500">Há 5 horas</span>
-          </div>
+          <ActivityItem
+            icon={Users}
+            iconColor="#2563eb"
+            title="Novo cliente cadastrado"
+            description="Ricardo Leite se cadastrou na plataforma"
+            time="Há 2 horas"
+          />
+          <ActivityItem
+            icon={TrendingUp}
+            iconColor="#16a34a"
+            title="Meta de conversão atingida"
+            description="Você atingiu 100% da meta mensal"
+            time="Há 5 horas"
+          />
+          <ActivityItem
+            icon={Activity}
+            iconColor="#ea580c"
+            title="Novo ticket criado"
+            description="Cliente solicitou suporte técnico"
+            time="Há 1 dia"
+          />
         </div>
       </div>
     </div>
