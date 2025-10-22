@@ -84,6 +84,7 @@ loomi/
 │   │   └── page.tsx            # Página inicial (redirect)
 │   │
 │   ├── components/             # Componentes reutilizáveis
+│   │   ├── charts/             # Componentes de gráficos (ApexChart, ChartKpi, etc)
 │   │   ├── layout/             # Componentes de layout
 │   │   │   ├── Header.tsx      # Cabeçalho fixo
 │   │   │   └── Sidebar.tsx     # Menu lateral fixo
@@ -111,15 +112,18 @@ loomi/
 │   ├── types/                  # Definições de tipos TypeScript
 │   │   └── index.ts            # Tipos globais
 │   │
+│   ├── __tests__/              # Testes automatizados (Jest)
+│   │   └── ...                 # Testes dos services, slices, middleware, etc
+│   │
 │   └── middleware.ts           # Middleware de autenticação Next.js
 │
 ├── public/                     # Arquivos estáticos
-├── .eslintrc.json             # Configuração ESLint
-├── .prettierrc.json           # Configuração Prettier
-├── next.config.ts             # Configuração Next.js
-├── tailwind.config.ts         # Configuração Tailwind
-├── tsconfig.json              # Configuração TypeScript
-└── package.json               # Dependências do projeto
+├── .eslintrc.json              # Configuração ESLint
+├── .prettierrc.json            # Configuração Prettier
+├── next.config.ts              # Configuração Next.js
+├── tailwind.config.ts          # Configuração Tailwind
+├── tsconfig.json               # Configuração TypeScript
+└── package.json                # Dependências do projeto
 ```
 
 ## 🎯 Funcionalidades Implementadas
