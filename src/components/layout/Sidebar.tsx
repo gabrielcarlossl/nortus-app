@@ -12,13 +12,14 @@ import {
   LogOut,
   Menu,
   X,
-  Shield,
 } from 'lucide-react';
+import Logo from '@/images/logo.png';
 import { useAppDispatch } from '@/store/hooks';
 import { logout } from '@/store/slices/authSlice';
 import { authService } from '@/services/auth.service';
 import { ROUTES } from '@/constants';
 import { toast } from 'sonner';
+import Image from 'next/image';
 
 /**
  * @description Item de menu da sidebar
@@ -90,7 +91,7 @@ export function Sidebar() {
           {/* Logo */}
           <div className="p-6 border-b border-gray-800">
             <div className="flex items-center space-x-2">
-              <Shield className="text-blue-500" size={32} />
+              <Image src={Logo} alt="Logo" />
               <h1 className="text-2xl font-bold text-white">Nortus</h1>
             </div>
           </div>

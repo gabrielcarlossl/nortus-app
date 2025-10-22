@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { Eye, EyeOff } from 'lucide-react';
 import { toast } from 'sonner';
 import { loginSchema, type LoginFormData } from '@/schemas/auth.schema';
@@ -9,6 +10,7 @@ import { authService } from '@/services/auth.service';
 import { useAppDispatch } from '@/store/hooks';
 import { setUser, setLoading } from '@/store/slices/authSlice';
 import { ROUTES } from '@/constants';
+import AppImage from '@/images/app-image.png';
 
 /**
  * @description Página de Login
@@ -141,9 +143,7 @@ export default function LoginPage() {
               {errors.email && (
                 <p className="text-red-400 text-xs mt-1 animate-fade-in">{errors.email}</p>
               )}
-              <p className="text-xs text-gray-500 mt-1">
-                Insira o seu e-mail, CPF ou passaporte.
-              </p>
+              <p className="text-xs text-gray-500 mt-1">Insira o seu e-mail, CPF ou passaporte.</p>
             </div>
 
             {/* Campo Senha */}
@@ -215,29 +215,13 @@ export default function LoginPage() {
 
         {/* Lado Direito - Ilustração */}
         <div className="hidden lg:flex items-center justify-center animate-fade-in">
-          <div className="relative w-full h-[600px] bg-linear-to-br from-blue-900/20 to-blue-600/10 rounded-3xl p-8 backdrop-blur-sm border border-blue-500/20">
-            <div className="flex items-center justify-between mb-6">
-              <button className="text-white flex items-center space-x-2 text-sm">
-                <span>🙋</span>
-                <span>Ajuda</span>
-              </button>
-              <button className="text-white flex items-center space-x-2 text-sm">
-                <span>🇧🇷</span>
-                <span>PT-br</span>
-              </button>
-            </div>
-            
-            {/* Ilustração - Placeholder */}
-            <div className="flex items-center justify-center h-full">
-              <div className="text-center space-y-4">
-                <div className="w-64 h-64 mx-auto bg-linear-to-br from-blue-500 to-cyan-500 rounded-full opacity-20 blur-3xl"></div>
-                <div className="relative -mt-48">
-                  <div className="text-6xl mb-4">🚗</div>
-                  <div className="text-6xl mb-4">🏠</div>
-                  <div className="text-6xl">📱</div>
-                </div>
-              </div>
-            </div>
+          <div className="relative w-full h-[600px] bg-[#03234D] rounded-3xl p-8 backdrop-blur-sm border border-blue-500/20">
+            <Image
+              src={AppImage}
+              alt="Ilustração do app"
+              className="w-full h-full rounded-3xl"
+              fill
+            />
           </div>
         </div>
       </div>
