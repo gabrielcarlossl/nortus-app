@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Plus, Ticket } from 'lucide-react';
 import { TicketsTable } from '@/components/TicketsTable';
 import { NewTicketModal } from '@/components/NewTicketModal';
+import { TicketSummaryCard } from '@/components/TicketSummaryCard';
 import { getTicketsData, createTicket } from '@/services/tickets.service';
 import type { NewTicketFormData } from '@/schemas/ticket.schema';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
@@ -87,47 +88,32 @@ export default function TicketsPage() {
         </button>
       </div>
 
-      {/* KPIs */}
+      {/* KPIs cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div className="bg-[#1a2332] rounded-xl p-6 border border-gray-800">
-          <div className="flex items-center justify-between mb-4">
-            <span className="text-gray-400 text-sm font-medium">Tickets Abertos</span>
-            <div className="p-2 bg-cyan-500/10 rounded-lg">
-              <Ticket className="text-cyan-400" size={20} />
-            </div>
-          </div>
-          <p className="text-3xl font-bold text-white">{data.resumo.open}</p>
-        </div>
-
-        <div className="bg-[#1a2332] rounded-xl p-6 border border-gray-800">
-          <div className="flex items-center justify-between mb-4">
-            <span className="text-gray-400 text-sm font-medium">Em Andamento</span>
-            <div className="p-2 bg-yellow-500/10 rounded-lg">
-              <Ticket className="text-yellow-400" size={20} />
-            </div>
-          </div>
-          <p className="text-3xl font-bold text-white">{data.resumo.inProgress}</p>
-        </div>
-
-        <div className="bg-[#1a2332] rounded-xl p-6 border border-gray-800">
-          <div className="flex items-center justify-between mb-4">
-            <span className="text-gray-400 text-sm font-medium">Resolvidos Hoje</span>
-            <div className="p-2 bg-green-500/10 rounded-lg">
-              <Ticket className="text-green-400" size={20} />
-            </div>
-          </div>
-          <p className="text-3xl font-bold text-white">{data.resumo.solved}</p>
-        </div>
-
-        <div className="bg-[#1a2332] rounded-xl p-6 border border-gray-800">
-          <div className="flex items-center justify-between mb-4">
-            <span className="text-gray-400 text-sm font-medium">Tempo Médio</span>
-            <div className="p-2 bg-blue-500/10 rounded-lg">
-              <Ticket className="text-blue-400" size={20} />
-            </div>
-          </div>
-          <p className="text-3xl font-bold text-white">{data.resumo.timeAverageHours}h</p>
-        </div>
+        <TicketSummaryCard
+          title="Tickets Abertos"
+          value={data.resumo.open}
+          icon={Ticket}
+          iconColor="cyan"
+        />
+        <TicketSummaryCard
+          title="Em Andamento"
+          value={data.resumo.inProgress}
+          icon={Ticket}
+          iconColor="yellow"
+        />
+        <TicketSummaryCard
+          title="Resolvidos Hoje"
+          value={data.resumo.solved}
+          icon={Ticket}
+          iconColor="green"
+        />
+        <TicketSummaryCard
+          title="Tempo Médio"
+          value={`${data.resumo.timeAverageHours}h`}
+          icon={Ticket}
+          iconColor="blue"
+        />
       </div>
 
       {/* Tabela */}
