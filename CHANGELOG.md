@@ -1,3 +1,22 @@
+# [1.2.0](https://github.com/gabrielcarlossl/loomi/compare/v1.1.0...v1.2.0) (2025-10-22)
+
+### Features
+
+- add reusable ActivityItem component ([0cffa23](https://github.com/gabrielcarlossl/loomi/commit/0cffa23c4292731a3a41cf23819d7b188655220e))
+- add reusable Badge component for priority and status in TicketsTable ([d113e15](https://github.com/gabrielcarlossl/loomi/commit/d113e152f75834ff5aaebd0dc05355ccf1806197))
+- add reusable KpiCard component for displaying KPI metrics ([19309e6](https://github.com/gabrielcarlossl/loomi/commit/19309e6bed6985318cb0f1259beb2133ba894055))
+- add reusable ticket cards ([fb6a610](https://github.com/gabrielcarlossl/loomi/commit/fb6a610b6f9fd133e559491aabddd60a1eb95338))
+- add ticket management service with data fetching and ticket creation ([9cf9a5c](https://github.com/gabrielcarlossl/loomi/commit/9cf9a5c9595aebf6111f96bfa78c533b5365394e))
+- add TicketsTable component with filtering, pagination, and search functionality ([3620068](https://github.com/gabrielcarlossl/loomi/commit/36200685cf7dbdbf2390da45d268aaa2f0728042))
+- add validation schema for new ticket creation ([a0e5a30](https://github.com/gabrielcarlossl/loomi/commit/a0e5a30a0d1ae1b90a1c715384e201104f1dbc98))
+- enhance TicketsPage with data fetching, KPIs display, and ticket creation modal ([871fb38](https://github.com/gabrielcarlossl/loomi/commit/871fb38880221377293f151484b594db1a5f4913))
+- implement dashboard data fetching from API and integrated on charts and cards ([48d2ab8](https://github.com/gabrielcarlossl/loomi/commit/48d2ab86c2ef7e7ce005efc15aed610db1930e32))
+- implement NewTicketModal component for ticket creation ([fe77973](https://github.com/gabrielcarlossl/loomi/commit/fe77973667f662b5937c03dfb3cc74204635fd4f))
+- implement Redux Persist for state management and add tickets slice ([e83bebf](https://github.com/gabrielcarlossl/loomi/commit/e83bebf162c8c93b1a66c331bd1409f946f71981))
+- implement ticket editing and viewing functionality with modals ([2273614](https://github.com/gabrielcarlossl/loomi/commit/2273614ecb30e1a29aa1a3d5f9061224880d585e))
+- integrate KpiCard component for KPI display in dashboard ([b813d2b](https://github.com/gabrielcarlossl/loomi/commit/b813d2b9c156d3617a99cfa28a874ce2592c61b0))
+- update TicketSummaryCard icons for better representation ([419e4c9](https://github.com/gabrielcarlossl/loomi/commit/419e4c9aa5fe7443a3e11f8a05b7fba869db5088))
+
 # [1.1.0](https://github.com/gabrielcarlossl/loomi/compare/v1.0.0...v1.1.0) (2025-10-22)
 
 ### Features
