@@ -1,7 +1,5 @@
 # Nortus - Plataforma de Inteligência para VendasThis is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-
-
 ![Next.js](https://img.shields.io/badge/Next.js-14+-black)
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
@@ -10,10 +8,7 @@
 
 ![Redux](https://img.shields.io/badge/Redux_Toolkit-2.0-764abc)
 
-
-
 Plataforma de inteligência artificial para times de vendas e atendimento que utiliza dados comportamentais, análise de perfil e sugestão inteligente de produtos e planos.
-
 
 run the development server:
 
@@ -33,15 +28,11 @@ yarn dev
 
 - **React 18** - Biblioteca UI
 
-
-
-### Gerenciamento de Estado 
+### Gerenciamento de Estado
 
 - **Redux Toolkit** - Gerenciamento de estado global
 
 - **React-Redux** - Integração Redux com React
-
-
 
 ### Estilização
 
@@ -49,9 +40,7 @@ yarn dev
 
 - **Lucide React** - Biblioteca de ícones moderna
 
-
 ### Formulários e Validação
-
 
 - **Zod** - Schema validation para formulários
 
@@ -61,7 +50,6 @@ yarn dev
 
 - **API Mockada** - Endpoints S3 da Loomi
 
-
 ### UI/UX
 
 ## Deploy on Vercel
@@ -70,11 +58,14 @@ yarn dev
 
 - **ApexCharts.js** - Biblioteca de gráficos (preparado para uso)
 
-
 ### Desenvolvimento
 
 - **ESLint** - Linter para qualidade de código
 - **Prettier** - Formatação de código
+- **Husky** - Git hooks automatizados
+- **Lint-staged** - Lint em arquivos staged
+- **Commitlint** - Validação de mensagens de commit
+- **Semantic Release** - Versionamento automático
 - **js-cookie** - Gerenciamento de cookies
 
 ## 📁 Estrutura do Projeto
@@ -134,6 +125,7 @@ loomi/
 ## 🎯 Funcionalidades Implementadas
 
 ### ✅ Autenticação
+
 - [x] Página de login com design baseado no protótipo
 - [x] Validação de formulário com Zod
 - [x] Validação de email em tempo real
@@ -148,6 +140,7 @@ loomi/
 - [x] Redirecionamento automático após login
 
 ### ✅ Infraestrutura
+
 - [x] Gerenciamento de estado com Redux Toolkit
 - [x] Sistema de rotas organizado
 - [x] Axios configurado com interceptors
@@ -159,28 +152,33 @@ loomi/
 ## 🚀 Como Executar
 
 ### Pré-requisitos
+
 - Node.js 18+
 - npm ou yarn
 
 ### Instalação
 
 1. Clone o repositório
+
 ```bash
 git clone <url-do-repositorio>
 cd loomi
 ```
 
 2. Instale as dependências
+
 ```bash
 npm install
 ```
 
 3. Execute o projeto em desenvolvimento
+
 ```bash
 npm run dev
 ```
 
 4. Acesse no navegador
+
 ```
 http://localhost:3000
 ```
@@ -188,18 +186,61 @@ http://localhost:3000
 ### Scripts Disponíveis
 
 ```bash
-npm run dev          # Inicia servidor de desenvolvimento
-npm run build        # Cria build de produção
-npm run start        # Inicia servidor de produção
-npm run lint         # Executa ESLint
+npm run dev               # Inicia servidor de desenvolvimento
+npm run build             # Cria build de produção
+npm run start             # Inicia servidor de produção
+npm run lint              # Executa ESLint
+npm run semantic-release  # Gera release automaticamente
 ```
+
+## 🔧 Git Workflow
+
+O projeto utiliza **Husky** para automação de tarefas Git. Consulte [GIT_WORKFLOW.md](./GIT_WORKFLOW.md) para detalhes completos.
+
+### Padrão de Commits (Conventional Commits)
+
+```bash
+# Formato
+<tipo>(<escopo>): <mensagem>
+
+# Exemplos
+feat: adiciona página de simulador
+fix(auth): corrige validação de email
+docs: atualiza README
+```
+
+### Tipos de Commit
+
+- **feat**: Nova funcionalidade
+- **fix**: Correção de bug
+- **docs**: Documentação
+- **style**: Formatação
+- **refactor**: Refatoração
+- **perf**: Performance
+- **test**: Testes
+- **chore**: Manutenção
+
+### Hooks Automáticos
+
+**Pre-commit**: Executa antes de cada commit
+
+- ✅ ESLint
+- ✅ Prettier
+- ✅ Validação de mensagem
+
+**Pre-push**: Executa antes de cada push
+
+- ✅ Lint completo
+- ✅ Build de produção
 
 ## 🔐 Autenticação
 
 ### Credenciais de Teste
+
 Para realizar login, use qualquer email válido e senha com no mínimo 6 caracteres.
 
 **Exemplo:**
+
 - Email: `teste@example.com`
 - Senha: `123456`
 
@@ -218,11 +259,13 @@ Para realizar login, use qualquer email válido e senha com no mínimo 6 caracte
 ### API Mockada
 
 **Endpoint de Login:**
+
 ```
 GET https://loomi.s3.us-east-1.amazonaws.com/mock-api-json/v2/login.json
 ```
 
 **Resposta:**
+
 ```json
 {
   "data": {
@@ -235,15 +278,17 @@ GET https://loomi.s3.us-east-1.amazonaws.com/mock-api-json/v2/login.json
 ## 🎨 Design System
 
 ### Cores Principais
+
 ```css
---background: #0f1629;     /* Fundo principal */
---foreground: #ffffff;      /* Texto principal */
---primary: #3b82f6;         /* Azul primário */
---secondary: #1e293b;       /* Cinza secundário */
---accent: #fbbf24;          /* Amarelo destaque */
+--background: #0f1629; /* Fundo principal */
+--foreground: #ffffff; /* Texto principal */
+--primary: #3b82f6; /* Azul primário */
+--secondary: #1e293b; /* Cinza secundário */
+--accent: #fbbf24; /* Amarelo destaque */
 ```
 
 ### Componentes
+
 - **Sidebar**: Menu lateral fixo com navegação
 - **Header**: Cabeçalho com perfil e notificações
 - **Cards**: Componentes de métricas e informações
@@ -253,6 +298,7 @@ GET https://loomi.s3.us-east-1.amazonaws.com/mock-api-json/v2/login.json
 ## 📦 Padrões de Projeto
 
 ### Organização de Código
+
 - **Components**: Componentes reutilizáveis com JSDoc
 - **Services**: Camada de serviços para API
 - **Schemas**: Validações centralizadas com Zod
@@ -261,6 +307,7 @@ GET https://loomi.s3.us-east-1.amazonaws.com/mock-api-json/v2/login.json
 - **Constants**: Configurações e constantes
 
 ### Convenções
+
 - Nomes de arquivos em camelCase
 - Componentes em PascalCase
 - Hooks customizados com prefixo `use`
@@ -268,8 +315,7 @@ GET https://loomi.s3.us-east-1.amazonaws.com/mock-api-json/v2/login.json
 - Constantes em UPPER_SNAKE_CASE
 
 ### Documentação
+
 - JSDoc em funções principais
 - Comentários explicativos em lógicas complexas
 - README atualizado com funcionalidades
-
-
