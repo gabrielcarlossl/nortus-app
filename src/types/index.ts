@@ -44,3 +44,25 @@ export interface MapData {
   zoom: number;
   locations: MapLocation[];
 }
+
+/**
+ * @description Tipos para o simulador de planos
+ */
+export interface PlanIndicator {
+  name: string;
+  conversion: number;
+  roi: number;
+  value: number;
+}
+
+export interface PlanData {
+  includedBenefits: string[];
+  plansIndicators: PlanIndicator[];
+}
+
+export interface AdditionalCoverage {
+  id: string;
+  name: string;
+  price: number;
+  enabled: boolean;
+}
