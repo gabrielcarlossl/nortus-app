@@ -114,14 +114,14 @@ export default function TicketsPage() {
   return (
     <div className="p-8">
       {/* Header */}
-      <div className="mb-8 flex items-center justify-between">
+      <div className="mb-8 flex items-center justify-between flex-col sm:flex-row">
         <div>
           <h1 className="text-3xl font-bold text-white mb-2">Gerenciamento de Tickets</h1>
           <p className="text-gray-400">Acompanhe e gerencie todos os tickets de suporte</p>
         </div>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-200 shadow-lg shadow-blue-500/20 cursor-pointer"
+          className="justify-center w-full sm:w-auto flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-200 shadow-lg shadow-blue-500/20 cursor-pointer"
         >
           <Plus size={20} />
           Novo Ticket
