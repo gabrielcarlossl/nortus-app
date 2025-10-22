@@ -1,21 +1,31 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import { newTicketSchema, type NewTicketFormData } from '@/schemas/ticket.schema';
 import { toast } from 'sonner';
+import type { Ticket } from '@/services/tickets.service';
 
 interface NewTicketModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSubmit: (data: NewTicketFormData) => Promise<void>;
   priorities: string[];
+  editingTicket?: Ticket | null;
+  onUpdate?: (id: string, data: NewTicketFormData) => Promise<void>;
 }
 
 /**
- * @description Modal para criar novo ticket
+ * @description Modal para criar ou editar ticket
  */
-export function NewTicketModal({ isOpen, onClose, onSubmit, priorities }: NewTicketModalProps) {
+export function NewTicketModal({
+  isOpen,
+  onClose,
+  onSubmit,
+  priorities,
+  editingTicket,
+  onUpdate,
+}: NewTicketModalProps) {
   const [formData, setFormData] = useState<NewTicketFormData>({
     client: '',
     email: '',
@@ -26,7 +36,30 @@ export function NewTicketModal({ isOpen, onClose, onSubmit, priorities }: NewTic
   const [errors, setErrors] = useState<Partial<Record<keyof NewTicketFormData, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Preenche formulário quando está editando
+  useEffect(() => {
+    if (editingTicket) {
+      setFormData({
+        client: editingTicket.client,
+        email: editingTicket.email,
+        priority: editingTicket.priority,
+        responsible: editingTicket.responsible,
+        subject: editingTicket.subject,
+      });
+    } else {
+      setFormData({
+        client: '',
+        email: '',
+        priority: '',
+        responsible: '',
+        subject: '',
+      });
+    }
+  }, [editingTicket, isOpen]);
+
   if (!isOpen) return null;
+
+  const isEditMode = !!editingTicket;
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -60,8 +93,17 @@ export function NewTicketModal({ isOpen, onClose, onSubmit, priorities }: NewTic
 
     try {
       setIsSubmitting(true);
-      await onSubmit(result.data);
-      toast.success('Ticket criado com sucesso!');
+
+      if (isEditMode && editingTicket && onUpdate) {
+        // Modo de edição
+        await onUpdate(editingTicket.id, result.data);
+        toast.success('Ticket atualizado com sucesso!');
+      } else {
+        // Modo de criação
+        await onSubmit(result.data);
+        toast.success('Ticket criado com sucesso!');
+      }
+
       // Limpa formulário
       setFormData({
         client: '',
@@ -72,7 +114,7 @@ export function NewTicketModal({ isOpen, onClose, onSubmit, priorities }: NewTic
       });
       onClose();
     } catch (error) {
-      toast.error('Erro ao criar ticket');
+      toast.error(isEditMode ? 'Erro ao atualizar ticket' : 'Erro ao criar ticket');
       console.error(error);
     } finally {
       setIsSubmitting(false);
@@ -102,7 +144,9 @@ export function NewTicketModal({ isOpen, onClose, onSubmit, priorities }: NewTic
       >
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-800">
-          <h2 className="text-xl font-semibold text-white">Novo Ticket</h2>
+          <h2 className="text-xl font-semibold text-white">
+            {isEditMode ? 'Editar Ticket' : 'Novo Ticket'}
+          </h2>
           <button
             onClick={handleCancel}
             className="text-gray-400 hover:text-white transition-colors cursor-pointer"
@@ -114,7 +158,9 @@ export function NewTicketModal({ isOpen, onClose, onSubmit, priorities }: NewTic
         {/* Content */}
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <p className="text-sm text-gray-400">
-            Preencha os dados abaixo para registrar um novo ticket na plataforma.
+            {isEditMode
+              ? 'Atualize as informações do ticket abaixo.'
+              : 'Preencha os dados abaixo para registrar um novo ticket na plataforma.'}
           </p>
 
           {/* Nome do cliente */}
@@ -234,7 +280,13 @@ export function NewTicketModal({ isOpen, onClose, onSubmit, priorities }: NewTic
               disabled={isSubmitting}
               className="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
-              {isSubmitting ? 'Salvando...' : 'Salvar'}
+              {isSubmitting
+                ? isEditMode
+                  ? 'Atualizando...'
+                  : 'Salvando...'
+                : isEditMode
+                  ? 'Atualizar'
+                  : 'Salvar'}
             </button>
           </div>
         </form>

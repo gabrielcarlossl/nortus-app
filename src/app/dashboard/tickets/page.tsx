@@ -4,11 +4,18 @@ import { useEffect, useState } from 'react';
 import { Plus, Ticket, MessageCircle, CheckSquare, Clock } from 'lucide-react';
 import { TicketsTable } from '@/components/TicketsTable';
 import { NewTicketModal } from '@/components/NewTicketModal';
+import { ViewTicketModal } from '@/components/ViewTicketModal';
 import { TicketSummaryCard } from '@/components/TicketSummaryCard';
-import { getTicketsData, createTicket } from '@/services/tickets.service';
+import { getTicketsData, createTicket, updateTicket } from '@/services/tickets.service';
 import type { NewTicketFormData } from '@/schemas/ticket.schema';
+import type { Ticket as TicketType } from '@/services/tickets.service';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { setTicketsData, setLoading, addTicket } from '@/store/slices/ticketsSlice';
+import {
+  setTicketsData,
+  setLoading,
+  addTicket,
+  updateTicket as updateTicketAction,
+} from '@/store/slices/ticketsSlice';
 
 /**
  * @description Página de Gerenciamento de Tickets
@@ -17,6 +24,9 @@ export default function TicketsPage() {
   const dispatch = useAppDispatch();
   const { data, loading } = useAppSelector(state => state.tickets);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isViewModalOpen, setIsViewModalOpen] = useState(false);
+  const [editingTicket, setEditingTicket] = useState<TicketType | null>(null);
+  const [viewingTicket, setViewingTicket] = useState<TicketType | null>(null);
 
   useEffect(() => {
     // Só busca dados da API se não houver dados no Redux (primeira vez)
@@ -39,6 +49,36 @@ export default function TicketsPage() {
   const handleCreateTicket = async (formData: NewTicketFormData) => {
     const newTicket = await createTicket(formData);
     dispatch(addTicket(newTicket));
+  };
+
+  const handleUpdateTicket = async (ticketId: string, formData: NewTicketFormData) => {
+    if (!data) return;
+
+    const currentTicket = data.tickets.find(t => t.id === ticketId);
+    if (!currentTicket) return;
+
+    const updatedTicket = await updateTicket(ticketId, formData, currentTicket);
+    dispatch(updateTicketAction(updatedTicket));
+  };
+
+  const handleEditClick = (ticket: TicketType) => {
+    setEditingTicket(ticket);
+    setIsModalOpen(true);
+  };
+
+  const handleViewClick = (ticket: TicketType) => {
+    setViewingTicket(ticket);
+    setIsViewModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setEditingTicket(null);
+  };
+
+  const handleCloseViewModal = () => {
+    setIsViewModalOpen(false);
+    setViewingTicket(null);
   };
 
   if (loading) {
@@ -121,14 +161,25 @@ export default function TicketsPage() {
         tickets={data.tickets}
         statusOptions={data.status}
         priorities={data.priorities}
+        onEditClick={handleEditClick}
+        onViewClick={handleViewClick}
       />
 
-      {/* Modal */}
+      {/* Modal de Criação/Edição */}
       <NewTicketModal
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        onClose={handleCloseModal}
         onSubmit={handleCreateTicket}
         priorities={data.priorities}
+        editingTicket={editingTicket}
+        onUpdate={handleUpdateTicket}
+      />
+
+      {/* Modal de Visualização */}
+      <ViewTicketModal
+        isOpen={isViewModalOpen}
+        onClose={handleCloseViewModal}
+        ticket={viewingTicket}
       />
     </div>
   );

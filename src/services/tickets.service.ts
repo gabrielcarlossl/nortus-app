@@ -77,3 +77,27 @@ export const createTicket = async (ticketData: NewTicketData): Promise<Ticket> =
 
   return newTicket;
 };
+
+/**
+ * Atualiza um ticket existente
+ */
+export const updateTicket = async (
+  ticketId: string,
+  ticketData: NewTicketData,
+  currentTicket: Ticket
+): Promise<Ticket> => {
+  // Simula atualização de ticket mantendo ID, status e data de criação
+  const updatedTicket: Ticket = {
+    ...currentTicket,
+    priority: ticketData.priority,
+    client: ticketData.client,
+    email: ticketData.email,
+    subject: ticketData.subject,
+    responsible: ticketData.responsible,
+  };
+
+  // Simula delay de rede
+  await new Promise(resolve => setTimeout(resolve, 500));
+
+  return updatedTicket;
+};

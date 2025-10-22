@@ -9,12 +9,20 @@ interface TicketsTableProps {
   tickets: Ticket[];
   statusOptions: string[];
   priorities: string[];
+  onEditClick?: (ticket: Ticket) => void;
+  onViewClick?: (ticket: Ticket) => void;
 }
 
 /**
  * @description Tabela de tickets com filtros e busca
  */
-export function TicketsTable({ tickets, statusOptions, priorities }: TicketsTableProps) {
+export function TicketsTable({
+  tickets,
+  statusOptions,
+  priorities,
+  onEditClick,
+  onViewClick,
+}: TicketsTableProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
   const [priorityFilter, setPriorityFilter] = useState('');
@@ -209,13 +217,15 @@ export function TicketsTable({ tickets, statusOptions, priorities }: TicketsTabl
                     <td className="px-6 py-4">
                       <div className="flex items-center justify-center gap-2">
                         <button
-                          className="p-2 hover:bg-blue-500/10 text-blue-400 hover:text-blue-300 rounded-lg transition-all duration-200"
+                          onClick={() => onEditClick?.(ticket)}
+                          className="p-2 hover:bg-blue-500/10 text-blue-400 hover:text-blue-300 rounded-lg transition-all duration-200 cursor-pointer"
                           title="Editar"
                         >
                           <Edit2 size={16} />
                         </button>
                         <button
-                          className="p-2 hover:bg-purple-500/10 text-purple-400 hover:text-purple-300 rounded-lg transition-all duration-200"
+                          onClick={() => onViewClick?.(ticket)}
+                          className="p-2 hover:bg-purple-500/10 text-purple-400 hover:text-purple-300 rounded-lg transition-all duration-200 cursor-pointer"
                           title="Ver detalhes"
                         >
                           <Eye size={16} />
