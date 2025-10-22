@@ -92,14 +92,20 @@ export function NewTicketModal({ isOpen, onClose, onSubmit, priorities }: NewTic
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-      <div className="bg-[#1a2332] rounded-xl border border-gray-800 w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+      onClick={handleCancel}
+    >
+      <div
+        className="bg-[#1a2332] rounded-xl border border-gray-800 w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto"
+        onClick={e => e.stopPropagation()}
+      >
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-800">
           <h2 className="text-xl font-semibold text-white">Novo Ticket</h2>
           <button
             onClick={handleCancel}
-            className="text-gray-400 hover:text-white transition-colors"
+            className="text-gray-400 hover:text-white transition-colors cursor-pointer"
           >
             <X size={24} />
           </button>
@@ -219,14 +225,14 @@ export function NewTicketModal({ isOpen, onClose, onSubmit, priorities }: NewTic
               type="button"
               onClick={handleCancel}
               disabled={isSubmitting}
-              className="flex-1 px-6 py-3 bg-transparent border border-gray-700 hover:border-gray-600 text-white font-medium rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 px-6 py-3 bg-transparent border border-gray-700 hover:border-gray-600 text-white font-medium rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
               Cancelar
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
               {isSubmitting ? 'Salvando...' : 'Salvar'}
             </button>
