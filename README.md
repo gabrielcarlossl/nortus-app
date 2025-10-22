@@ -1,36 +1,321 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nortus - Plataforma de Inteligência para VendasThis is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+![Next.js](https://img.shields.io/badge/Next.js-14+-black)
 
-First, run the development server:
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
+
+![TailwindCSS](https://img.shields.io/badge/Tailwind-3.0-38bdf8)
+
+![Redux](https://img.shields.io/badge/Redux_Toolkit-2.0-764abc)
+
+Plataforma de inteligência artificial para times de vendas e atendimento que utiliza dados comportamentais, análise de perfil e sugestão inteligente de produtos e planos.
+
+run the development server:
 
 ```bash
 npm run dev
+
 # or
+
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Tecnologias Utilizadas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js 14+** - Framework React com App Router
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **TypeScript** - Tipagem estáticabun dev
 
-## Learn More
+- **React 18** - Biblioteca UI
 
-To learn more about Next.js, take a look at the following resources:
+### Gerenciamento de Estado
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Redux Toolkit** - Gerenciamento de estado global
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **React-Redux** - Integração Redux com React
+
+### Estilização
+
+- **Tailwind CSS** - Framework CSS utility-first
+
+- **Lucide React** - Biblioteca de ícones moderna
+
+### Formulários e Validação
+
+- **Zod** - Schema validation para formulários
+
+### API e Dados
+
+- **Axios** - Cliente HTTP para requisições
+
+- **API Mockada** - Endpoints S3 da Loomi
+
+### UI/UX
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Sonner** - Toast notifications elegantes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **ApexCharts.js** - Biblioteca de gráficos (preparado para uso)
+
+### Desenvolvimento
+
+- **ESLint** - Linter para qualidade de código
+- **Prettier** - Formatação de código
+- **Husky** - Git hooks automatizados
+- **Lint-staged** - Lint em arquivos staged
+- **Commitlint** - Validação de mensagens de commit
+- **Semantic Release** - Versionamento automático
+- **js-cookie** - Gerenciamento de cookies
+
+## 📁 Estrutura do Projeto
+
+```bash
+loomi/
+├── src/
+│   ├── app/                    # App Router do Next.js
+│   │   ├── dashboard/          # Páginas do dashboard
+│   │   │   ├── layout.tsx      # Layout com sidebar e header
+│   │   │   └── page.tsx        # Página principal do dashboard
+│   │   ├── login/              # Página de login
+│   │   │   └── page.tsx        # Formulário de autenticação
+│   │   ├── globals.css         # Estilos globais
+│   │   ├── layout.tsx          # Layout raiz com providers
+│   │   └── page.tsx            # Página inicial (redirect)
+│   │
+│   ├── components/             # Componentes reutilizáveis
+│   │   ├── layout/             # Componentes de layout
+│   │   │   ├── Header.tsx      # Cabeçalho fixo
+│   │   │   └── Sidebar.tsx     # Menu lateral fixo
+│   │   └── providers/          # Providers React
+│   │       └── ReduxProvider.tsx
+│   │
+│   ├── constants/              # Constantes da aplicação
+│   │   └── index.ts            # URLs, rotas, configurações
+│   │
+│   ├── lib/                    # Bibliotecas e configurações
+│   │   └── axios.ts            # Instância configurada do Axios
+│   │
+│   ├── schemas/                # Schemas de validação Zod
+│   │   └── auth.schema.ts      # Validação de autenticação
+│   │
+│   ├── services/               # Serviços de API
+│   │   └── auth.service.ts     # Serviço de autenticação
+│   │
+│   ├── store/                  # Redux Store
+│   │   ├── slices/             # Redux Slices
+│   │   │   └── authSlice.ts    # Estado de autenticação
+│   │   ├── hooks.ts            # Hooks tipados do Redux
+│   │   └── index.ts            # Configuração da store
+│   │
+│   ├── types/                  # Definições de tipos TypeScript
+│   │   └── index.ts            # Tipos globais
+│   │
+│   └── middleware.ts           # Middleware de autenticação Next.js
+│
+├── public/                     # Arquivos estáticos
+├── .eslintrc.json             # Configuração ESLint
+├── .prettierrc.json           # Configuração Prettier
+├── next.config.ts             # Configuração Next.js
+├── tailwind.config.ts         # Configuração Tailwind
+├── tsconfig.json              # Configuração TypeScript
+└── package.json               # Dependências do projeto
+```
+
+## 🎯 Funcionalidades Implementadas
+
+### ✅ Autenticação
+
+- [x] Página de login com design baseado no protótipo
+- [x] Validação de formulário com Zod
+- [x] Validação de email em tempo real
+- [x] Toggle para mostrar/ocultar senha
+- [x] Checkbox "Lembrar-me"
+- [x] Feedback visual com Sonner (sucesso/erro)
+- [x] Animações na interface
+- [x] Integração com API mockada
+- [x] Armazenamento de token em cookies
+- [x] Armazenamento de dados do usuário em localStorage
+- [x] Middleware Next.js para proteção de rotas
+- [x] Redirecionamento automático após login
+
+### ✅ Infraestrutura
+
+- [x] Gerenciamento de estado com Redux Toolkit
+- [x] Sistema de rotas organizado
+- [x] Axios configurado com interceptors
+- [x] Tratamento de erros global
+- [x] TypeScript em toda aplicação
+- [x] ESLint e Prettier configurados
+- [x] Animações CSS customizadas
+
+## 🚀 Como Executar
+
+### Pré-requisitos
+
+- Node.js 18+
+- npm ou yarn
+
+### Instalação
+
+1. Clone o repositório
+
+```bash
+git clone <url-do-repositorio>
+cd loomi
+```
+
+2. Instale as dependências
+
+```bash
+npm install
+```
+
+3. Execute o projeto em desenvolvimento
+
+```bash
+npm run dev
+```
+
+4. Acesse no navegador
+
+```
+http://localhost:3000
+```
+
+### Scripts Disponíveis
+
+```bash
+npm run dev               # Inicia servidor de desenvolvimento
+npm run build             # Cria build de produção
+npm run start             # Inicia servidor de produção
+npm run lint              # Executa ESLint
+npm run semantic-release  # Gera release automaticamente
+```
+
+## 🔧 Git Workflow
+
+O projeto utiliza **Husky** para automação de tarefas Git. Consulte [GIT_WORKFLOW.md](./GIT_WORKFLOW.md) para detalhes completos.
+
+### Padrão de Commits (Conventional Commits)
+
+```bash
+# Formato
+<tipo>(<escopo>): <mensagem>
+
+# Exemplos
+feat: adiciona página de simulador
+fix(auth): corrige validação de email
+docs: atualiza README
+```
+
+### Tipos de Commit
+
+- **feat**: Nova funcionalidade
+- **fix**: Correção de bug
+- **docs**: Documentação
+- **style**: Formatação
+- **refactor**: Refatoração
+- **perf**: Performance
+- **test**: Testes
+- **chore**: Manutenção
+
+### Hooks Automáticos
+
+**Pre-commit**: Executa antes de cada commit
+
+- ✅ ESLint
+- ✅ Prettier
+- ✅ Validação de mensagem
+
+**Pre-push**: Executa antes de cada push
+
+- ✅ Lint completo
+- ✅ Build de produção
+
+## 🔐 Autenticação
+
+### Credenciais de Teste
+
+Para realizar login, use qualquer email válido e senha com no mínimo 6 caracteres.
+
+**Exemplo:**
+
+- Email: `teste@example.com`
+- Senha: `123456`
+
+### Fluxo de Autenticação
+
+1. Usuário acessa `/login`
+2. Preenche formulário (validação Zod em tempo real)
+3. Submit → Validação completa
+4. Requisição para API mockada
+5. Token armazenado em cookie (7 dias)
+6. Dados do usuário no localStorage
+7. Redux state atualizado
+8. Redirecionamento para `/dashboard`
+9. Middleware protege rotas autenticadas
+
+### API Mockada
+
+**Endpoint de Login:**
+
+```
+GET https://loomi.s3.us-east-1.amazonaws.com/mock-api-json/v2/login.json
+```
+
+**Resposta:**
+
+```json
+{
+  "data": {
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "username": "Usuário..."
+  }
+}
+```
+
+## 🎨 Design System
+
+### Cores Principais
+
+```css
+--background: #0f1629; /* Fundo principal */
+--foreground: #ffffff; /* Texto principal */
+--primary: #3b82f6; /* Azul primário */
+--secondary: #1e293b; /* Cinza secundário */
+--accent: #fbbf24; /* Amarelo destaque */
+```
+
+### Componentes
+
+- **Sidebar**: Menu lateral fixo com navegação
+- **Header**: Cabeçalho com perfil e notificações
+- **Cards**: Componentes de métricas e informações
+- **Forms**: Inputs com validação e feedback visual
+- **Toasts**: Notificações com Sonner
+
+## 📦 Padrões de Projeto
+
+### Organização de Código
+
+- **Components**: Componentes reutilizáveis com JSDoc
+- **Services**: Camada de serviços para API
+- **Schemas**: Validações centralizadas com Zod
+- **Store**: Estado global com Redux Toolkit
+- **Types**: Tipos TypeScript compartilhados
+- **Constants**: Configurações e constantes
+
+### Convenções
+
+- Nomes de arquivos em camelCase
+- Componentes em PascalCase
+- Hooks customizados com prefixo `use`
+- Types e Interfaces em PascalCase
+- Constantes em UPPER_SNAKE_CASE
+
+### Documentação
+
+- JSDoc em funções principais
+- Comentários explicativos em lógicas complexas
+- README atualizado com funcionalidades
