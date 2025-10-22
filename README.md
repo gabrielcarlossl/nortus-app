@@ -10,16 +10,6 @@
 
 Plataforma de inteligência artificial para times de vendas e atendimento que utiliza dados comportamentais, análise de perfil e sugestão inteligente de produtos e planos.
 
-run the development server:
-
-```bash
-npm run dev
-
-# or
-
-yarn dev
-```
-
 ## 🚀 Tecnologias Utilizadas
 
 - **Next.js 14+** - Framework React com App Router
@@ -52,21 +42,24 @@ yarn dev
 
 ### UI/UX
 
-## Deploy on Vercel
-
 - **Sonner** - Toast notifications elegantes
 
 - **ApexCharts.js** - Biblioteca de gráficos (preparado para uso)
+
+## Deploy on Vercel
+
+- **Acesse o link de deploy** - [Nortus](https://nortus-v7.netlify.app/)
 
 ### Desenvolvimento
 
 - **ESLint** - Linter para qualidade de código
 - **Prettier** - Formatação de código
-- **Husky** - Git hooks automatizados
+- **Husky** - Git hooks automatizados para pre commit e pre push
 - **Lint-staged** - Lint em arquivos staged
 - **Commitlint** - Validação de mensagens de commit
 - **Semantic Release** - Versionamento automático
 - **js-cookie** - Gerenciamento de cookies
+- **Jest** - Testes unitários
 
 ## 📁 Estrutura do Projeto
 
@@ -152,6 +145,7 @@ loomi/
 - [x] TypeScript em toda aplicação
 - [x] ESLint e Prettier configurados
 - [x] Animações CSS customizadas
+- [x] Testes unitários
 
 ## 🚀 Como Executar
 
@@ -195,6 +189,7 @@ npm run build             # Cria build de produção
 npm run start             # Inicia servidor de produção
 npm run lint              # Executa ESLint
 npm run semantic-release  # Gera release automaticamente
+npm run test              # Inicia os testes unitários
 ```
 
 ## 🔧 Git Workflow
@@ -235,6 +230,7 @@ docs: atualiza README
 **Pre-push**: Executa antes de cada push
 
 - ✅ Lint completo
+- ✅ Testes unitários
 - ✅ Build de produção
 
 ## 🔐 Autenticação
