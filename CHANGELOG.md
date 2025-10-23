@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/gabrielcarlossl/loomi/compare/v1.3.0...v1.4.0) (2025-10-23)
+
+### Features
+
+- add PlanIndicatorCard component for displaying plan performance indicators ([8e9b54f](https://github.com/gabrielcarlossl/loomi/commit/8e9b54f7c6e24373e53df08ac79e5d3b5d032c4e))
+- add RangeSlider component for customizable range selection ([f38228d](https://github.com/gabrielcarlossl/loomi/commit/f38228d23c40b21b18e515e72f5c397d09a683d7))
+- add reusable PlanCard component ([a3e4590](https://github.com/gabrielcarlossl/loomi/commit/a3e4590fe8805274ed2a54a1b692462f56c0f3a9))
+- add types for plan simulator and additional coverage ([49e2fee](https://github.com/gabrielcarlossl/loomi/commit/49e2feecb360cc60f6abe85933f622db9246ce3a))
+- implement interactive insurance plan simulator with dynamic pricing and coverage options ([4864c8c](https://github.com/gabrielcarlossl/loomi/commit/4864c8c78137d9660d898cfe7b82450563104326))
+- implement plan data fetching service ([a10330a](https://github.com/gabrielcarlossl/loomi/commit/a10330af2c2501eaa23bc1c4e539393080b093ad))
+- integrate RangeSlider and PlanIndicatorCard components ([ce434a2](https://github.com/gabrielcarlossl/loomi/commit/ce434a2ad9ae5c31726b4849f5afc29e139e6e8b))
+
 # [1.3.0](https://github.com/gabrielcarlossl/loomi/compare/v1.2.0...v1.3.0) (2025-10-22)
 
 ### Features
