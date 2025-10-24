@@ -86,7 +86,6 @@ export default function UserDropdown({ isOpen, onClose }: UserDropdownProps) {
                 {user?.username || 'Usuário'}
               </p>
               <p className="text-xs text-gray-400 truncate">{user?.email || 'user@example.com'}</p>
-              <p className="text-xs text-gray-500 mt-0.5">Assistente Colaborador</p>
             </div>
           </div>
         </div>
