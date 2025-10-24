@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react';
 import { getClient360Data } from '@/services/client360.service';
 import { Client360Data } from '@/types';
-import { Phone, Mail, MoreVertical, ExternalLink, Diamond, MoreHorizontal } from 'lucide-react';
+import { Phone, Mail, ExternalLink, Diamond, MoreHorizontal } from 'lucide-react';
+import Client360Skeleton from '@/components/Client360Skeleton';
 
 /**
  * @fileoverview Página de Visão 360 do Cliente
@@ -43,7 +44,6 @@ export default function Client360Page() {
         setLoading(false);
       }
     }
-
     loadData();
   }, []);
 
@@ -74,11 +74,7 @@ export default function Client360Page() {
   };
 
   if (loading || !data) {
-    return (
-      <div className="flex items-center justify-center h-96">
-        <div className="text-gray-400">Carregando...</div>
-      </div>
-    );
+    return <Client360Skeleton />;
   }
 
   const selectedSuggestion = data.sugestionsIA[selectedTab];
