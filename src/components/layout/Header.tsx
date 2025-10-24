@@ -5,6 +5,7 @@ import { Bell, Search, User, Globe } from 'lucide-react';
 import { useAppSelector } from '@/store/hooks';
 import NotificationsModal from '@/components/modals/NotificationsModal';
 import LanguageSelector from '@/components/modals/LanguageSelector';
+import UserDropdown from '@/components/modals/UserDropdown';
 
 /**
  * @description Componente Header
@@ -14,6 +15,7 @@ export function Header() {
   const { user } = useAppSelector(state => state.auth);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const [isLanguageSelectorOpen, setIsLanguageSelectorOpen] = useState(false);
+  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
 
   return (
     <header className="fixed top-0 right-0 left-0 lg:left-64 h-16 bg-[#1a2332] border-b border-gray-800 z-30">
@@ -49,7 +51,10 @@ export function Header() {
           </button>
 
           {/* User Profile */}
-          <button className="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-[#0f1629] transition-colors">
+          <button
+            onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)}
+            className="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-[#0f1629] transition-colors cursor-pointer"
+          >
             <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
               {user?.username ? (
                 <span className="text-white text-sm font-medium">
@@ -78,6 +83,9 @@ export function Header() {
         isOpen={isLanguageSelectorOpen}
         onClose={() => setIsLanguageSelectorOpen(false)}
       />
+
+      {/* User Dropdown */}
+      <UserDropdown isOpen={isUserDropdownOpen} onClose={() => setIsUserDropdownOpen(false)} />
     </header>
   );
 }
