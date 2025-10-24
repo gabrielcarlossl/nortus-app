@@ -90,7 +90,10 @@ export function Sidebar() {
         <div className="flex flex-col h-full">
           {/* Logo */}
           <div className="p-6 border-b border-gray-800">
-            <div className="flex items-center space-x-2">
+            <div
+              onClick={() => router.push(ROUTES.DASHBOARD)}
+              className="flex items-center space-x-2 cursor-pointer"
+            >
               <Image src={Logo} alt="Logo" />
               <h1 className="text-2xl font-bold text-white">Nortus</h1>
             </div>
