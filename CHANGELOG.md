@@ -1,3 +1,21 @@
+# [1.5.0](https://github.com/gabrielcarlossl/loomi/compare/v1.4.0...v1.5.0) (2025-10-24)
+
+### Features
+
+- add reusable ToggleSwitch component ([68645a5](https://github.com/gabrielcarlossl/loomi/commit/68645a5eb4a2558f8b415b6847ac8a52472709f1))
+- add Client 360 loading skeleton component for data fetching ([c790e81](https://github.com/gabrielcarlossl/loomi/commit/c790e811d2884f8e80c4021325687d040f5521ce))
+- add JSDoc for structured code documentation ([f4b806c](https://github.com/gabrielcarlossl/loomi/commit/f4b806cd8219fd7c78a309022cddea9496f4c2ff))
+- add LanguageSelector component for language selection in the header ([da0d371](https://github.com/gabrielcarlossl/loomi/commit/da0d371e40e217c93f99f099523368b18eacb16b))
+- add NotificationsModal component for displaying system notifications ([fd473ef](https://github.com/gabrielcarlossl/loomi/commit/fd473ef92e75d44c880f6e6e1f355bdb38fd5eee))
+- add SimulatorSkeleton component for loading state in Plan Simulator ([1da14a7](https://github.com/gabrielcarlossl/loomi/commit/1da14a7c2707c92bd373bc883920d6a769a4c01d))
+- add types for Client 360 endpoint response ([3349da4](https://github.com/gabrielcarlossl/loomi/commit/3349da4cb418bce1c32fbd55742a148db6114c1f))
+- add UserDropdown component for user profile options in the header ([67200d1](https://github.com/gabrielcarlossl/loomi/commit/67200d1a5cfa0d38da190a04fc234cf87619c71b))
+- implement Client 360 data fetching service ([12c4ce2](https://github.com/gabrielcarlossl/loomi/commit/12c4ce2df54e893e315a2bd4eaf3da84151bb8b1))
+- implement Client 360 page with detailed client profile and AI suggestions ([7c0ef39](https://github.com/gabrielcarlossl/loomi/commit/7c0ef39eb04597ee29155ceaf7659ab2bd0d41d3))
+- implement SettingsPage component for user preferences management ([58b023b](https://github.com/gabrielcarlossl/loomi/commit/58b023b5f47d942d6ebc46d0d8e02962a332358a))
+- integrate Client 360 loading skeleton and clean up imports ([800cb94](https://github.com/gabrielcarlossl/loomi/commit/800cb94c157e043774e63ada5db4445bf31b9466))
+- update Sidebar logo to navigate to Dashboard ([520b2b9](https://github.com/gabrielcarlossl/loomi/commit/520b2b988f13e41d7c6b6dba7362979b1238909a))
+
 # [1.4.0](https://github.com/gabrielcarlossl/loomi/compare/v1.3.0...v1.4.0) (2025-10-23)
 
 ### Features
