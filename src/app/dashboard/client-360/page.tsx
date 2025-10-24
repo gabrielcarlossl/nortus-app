@@ -262,7 +262,7 @@ export default function Client360Page() {
           <div className="bg-[#1a2332] rounded-xl p-6 border border-gray-800">
             <h2 className="text-xl font-semibold text-white mb-6">Classificação inteligente</h2>
 
-            <div className="flex gap-6">
+            <div className="flex flex-col md:flex-row gap-6">
               {/* Segment Badge */}
               <div>
                 <div className="col-span-2 flex items-center justify-center py-8">
@@ -278,7 +278,7 @@ export default function Client360Page() {
 
                 <div className="flex gap-3">
                   {/* Lifetime Value */}
-                  <div>
+                  <div className="border-r border-gray-400 pr-3">
                     <p className="text-sm text-gray-400 mb-2">Life time value</p>
                     <p className="text-xl font-bold text-white">
                       {formatCurrency(data.smartClassification.lifeTimeValue)}
@@ -297,7 +297,7 @@ export default function Client360Page() {
                 </div>
               </div>
 
-              <div className="flex flex-col w-full justify-around">
+              <div className="flex flex-col w-full justify-around gap-2">
                 {/* Expansion Score */}
                 <div className="col-span-2">
                   <div className="flex gap-2 items-center mb-2">
