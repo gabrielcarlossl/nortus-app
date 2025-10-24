@@ -4,8 +4,6 @@
  * @description
  * Switch reutilizável estilo iOS para ativar/desativar opções.
  *
- * @author Loomi Platform
- * @version 1.0.0
  */
 
 interface ToggleSwitchProps {

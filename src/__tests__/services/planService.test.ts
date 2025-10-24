@@ -5,8 +5,6 @@
  * Testes de error handling para o serviço de planos.
  * Focado em validar o comportamento do service, não o contrato da API.
  *
- * @author Loomi Platform
- * @version 1.0.0
  */
 
 import { getPlanData } from '../../services/plan.service';

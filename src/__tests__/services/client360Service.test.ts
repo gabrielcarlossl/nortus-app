@@ -5,8 +5,6 @@
  * Testes de error handling para o serviço de visão 360 do cliente.
  * Focado em validar o comportamento do service, não o contrato da API.
  *
- * @author Loomi Platform
- * @version 1.0.0
  */
 
 import { getClient360Data } from '../../services/client360.service';

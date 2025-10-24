@@ -11,9 +11,6 @@
  * - Configurações de segurança
  * - Preferências de aparência
  * - Configurações de privacidade
- *
- * @author Loomi Platform
- * @version 1.0.0
  */
 
 'use client';
