@@ -60,6 +60,7 @@ Plataforma de inteligência artificial para times de vendas e atendimento que ut
 - **Semantic Release** - Versionamento automático
 - **js-cookie** - Gerenciamento de cookies
 - **Jest** - Testes unitários
+- **JSDoc** - Documentação de código com comentários estruturados
 
 ## 📁 Estrutura do Projeto
 

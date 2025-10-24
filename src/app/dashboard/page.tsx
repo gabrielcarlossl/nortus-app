@@ -7,7 +7,7 @@ import { ChartKpi } from '@/components/charts/ChartKpi';
 import { ChartSegment } from '@/components/charts/ChartSegment';
 import { ClientMap } from '@/components/charts/ClientMap';
 import { ActivityItem } from '@/components/ActivityItem';
-import { KpiCard } from '@/components/KpiCard';
+import { KpiCard } from '@/components/cards/KpiCard';
 import { getDashboardData, type DashboardData } from '@/services/dashboard.service';
 
 /**

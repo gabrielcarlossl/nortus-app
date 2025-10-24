@@ -3,9 +3,9 @@
 import { useEffect, useState } from 'react';
 import { Plus, Ticket, MessageCircle, CheckSquare, Clock } from 'lucide-react';
 import { TicketsTable } from '@/components/TicketsTable';
-import { NewTicketModal } from '@/components/NewTicketModal';
-import { ViewTicketModal } from '@/components/ViewTicketModal';
-import { TicketSummaryCard } from '@/components/TicketSummaryCard';
+import { NewTicketModal } from '@/components/modals/NewTicketModal';
+import { ViewTicketModal } from '@/components/modals/ViewTicketModal';
+import { TicketSummaryCard } from '@/components/cards/TicketSummaryCard';
 import { getTicketsData, createTicket, updateTicket } from '@/services/tickets.service';
 import type { NewTicketFormData } from '@/schemas/ticket.schema';
 import type { Ticket as TicketType } from '@/services/tickets.service';

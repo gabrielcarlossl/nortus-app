@@ -90,7 +90,10 @@ export function Sidebar() {
         <div className="flex flex-col h-full">
           {/* Logo */}
           <div className="p-6 border-b border-gray-800">
-            <div className="flex items-center space-x-2">
+            <div
+              onClick={() => router.push(ROUTES.DASHBOARD)}
+              className="flex items-center space-x-2 cursor-pointer"
+            >
               <Image src={Logo} alt="Logo" />
               <h1 className="text-2xl font-bold text-white">Nortus</h1>
             </div>
@@ -125,10 +128,18 @@ export function Sidebar() {
 
           {/* Footer Actions */}
           <div className="p-4 border-t border-gray-800 space-y-2">
-            <button className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-[#0f1629] hover:text-white transition-all duration-200 w-full">
+            <Link
+              href={ROUTES.SETTINGS}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 w-full ${
+                pathname === ROUTES.SETTINGS
+                  ? 'bg-blue-600 text-white'
+                  : 'text-gray-400 hover:bg-[#0f1629] hover:text-white'
+              }`}
+            >
               <Settings size={20} />
               <span className="font-medium">Configurações</span>
-            </button>
+            </Link>
             <button
               onClick={handleLogout}
               className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-red-600 hover:text-white transition-all duration-200 w-full cursor-pointer"

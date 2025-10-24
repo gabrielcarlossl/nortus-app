@@ -3,9 +3,10 @@
 import { useEffect, useState } from 'react';
 import { getPlanData } from '@/services/plan.service';
 import { PlanData, PlanIndicator, AdditionalCoverage } from '@/types';
-import PlanCard from '@/components/PlanCard';
+import PlanCard from '@/components/cards/PlanCard';
 import RangeSlider from '@/components/RangeSlider';
-import PlanIndicatorCard from '@/components/PlanIndicatorCard';
+import PlanIndicatorCard from '@/components/cards/PlanIndicatorCard';
+import SimulatorSkeleton from '@/components/modals/SimulatorSkeleton';
 
 /**
  * @fileoverview Componente da página do Simulador de Planos de Seguro
@@ -308,11 +309,7 @@ export default function SimulatorPage() {
   };
 
   if (loading || !planData) {
-    return (
-      <div className="flex items-center justify-center h-96">
-        <div className="text-gray-400">Carregando...</div>
-      </div>
-    );
+    return <SimulatorSkeleton />;
   }
 
   return (
