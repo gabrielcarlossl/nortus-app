@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { getClient360Data } from '@/services/client360.service';
 import { Client360Data } from '@/types';
 import { Phone, Mail, ExternalLink, Diamond, MoreHorizontal } from 'lucide-react';
-import Client360Skeleton from '@/components/Client360Skeleton';
+import Client360Skeleton from '@/components/loading/Client360Skeleton';
 
 /**
  * @fileoverview Página de Visão 360 do Cliente
