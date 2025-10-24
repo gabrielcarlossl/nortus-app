@@ -320,3 +320,14 @@ GET https://loomi.s3.us-east-1.amazonaws.com/mock-api-json/v2/login.json
 - JSDoc em funções principais
 - Comentários explicativos em lógicas complexas
 - README atualizado com funcionalidades
+
+### Relatório de Desenvolvimento
+
+- Leia o [DEVELOPMENT_REPORT.md](./DEVELOPMENT_REPORT.md) para saber tudo sobre:
+
+1. Como organizei as demandas e atividades.
+2. Como priorizei as entregas.
+3. Quais foram as principais dificuldades enfrentadas e como lidei com
+   elas.
+4. O que faria diferente com mais tempo ou em um contexto real de
+   projeto.
