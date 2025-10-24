@@ -4,8 +4,7 @@
 
 export const APP_NAME = 'Nortus';
 
-export const API_BASE_URL =
-  'https://loomi.s3.us-east-1.amazonaws.com/mock-api-json/v2';
+export const API_BASE_URL = 'https://loomi.s3.us-east-1.amazonaws.com/mock-api-json/v2';
 
 export const ROUTES = {
   LOGIN: '/login',
@@ -13,6 +12,7 @@ export const ROUTES = {
   TICKETS: '/dashboard/tickets',
   SIMULATOR: '/dashboard/simulator',
   CLIENT_360: '/dashboard/client-360',
+  SETTINGS: '/dashboard/settings',
 } as const;
 
 export const AUTH_COOKIE_NAME = 'nortus_auth_token';
