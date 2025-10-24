@@ -262,82 +262,94 @@ export default function Client360Page() {
           <div className="bg-[#1a2332] rounded-xl p-6 border border-gray-800">
             <h2 className="text-xl font-semibold text-white mb-6">Classificação inteligente</h2>
 
-            <div className="grid grid-cols-2 gap-6">
+            <div className="flex gap-6">
               {/* Segment Badge */}
-              <div className="col-span-2 flex items-center justify-center py-8">
-                <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-linear-to-br from-cyan-400 to-blue-500 mb-4">
-                    <Diamond size={40} className="text-white" />
+              <div>
+                <div className="col-span-2 flex items-center justify-center py-8">
+                  <div className="text-center">
+                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-linear-to-br from-cyan-400 to-blue-500 mb-4">
+                      <Diamond size={40} className="text-white" />
+                    </div>
+                    <p className="text-2xl font-bold text-white">
+                      {data.smartClassification.segment}
+                    </p>
                   </div>
-                  <p className="text-2xl font-bold text-white">
-                    {data.smartClassification.segment}
-                  </p>
+                </div>
+
+                <div className="flex gap-3">
+                  {/* Lifetime Value */}
+                  <div>
+                    <p className="text-sm text-gray-400 mb-2">Life time value</p>
+                    <p className="text-xl font-bold text-white">
+                      {formatCurrency(data.smartClassification.lifeTimeValue)}
+                    </p>
+                  </div>
+
+                  {/* Churn Probability */}
+                  <div>
+                    <p className="text-sm text-gray-400 mb-2 whitespace-nowrap">
+                      Probabilidade de churn
+                    </p>
+                    <p className="text-xl font-bold text-green-500">
+                      {data.smartClassification.churnProbability}%
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              {/* Lifetime Value */}
-              <div>
-                <p className="text-sm text-gray-400 mb-2">Life time value</p>
-                <p className="text-xl font-bold text-white">
-                  {formatCurrency(data.smartClassification.lifeTimeValue)}
-                </p>
-              </div>
-
-              {/* Churn Probability */}
-              <div>
-                <p className="text-sm text-gray-400 mb-2">Probabilidade de churn</p>
-                <p className="text-xl font-bold text-green-500">
-                  {data.smartClassification.churnProbability}%
-                </p>
-              </div>
-
-              {/* Expansion Score */}
-              <div className="col-span-2">
-                <div className="flex justify-between items-center mb-2">
-                  <p className="text-sm text-gray-400">Score de expansão</p>
-                  <span
-                    className="px-2 py-1 text-xs font-medium rounded"
-                    style={{
-                      backgroundColor: `${getScoreColor(data.smartClassification.expansionScore.level)}20`,
-                      color: getScoreColor(data.smartClassification.expansionScore.level),
-                    }}
-                  >
-                    {data.smartClassification.expansionScore.level}
-                  </span>
+              <div className="flex flex-col w-full justify-around">
+                {/* Expansion Score */}
+                <div className="col-span-2">
+                  <div className="flex gap-2 items-center mb-2">
+                    <p className="text-sm text-gray-400">Score de expansão</p>
+                    <span
+                      className="px-2 py-1 text-xs font-medium rounded"
+                      style={{
+                        backgroundColor: `${getScoreColor(data.smartClassification.expansionScore.level)}20`,
+                        color: getScoreColor(data.smartClassification.expansionScore.level),
+                      }}
+                    >
+                      {data.smartClassification.expansionScore.level}
+                    </span>
+                  </div>
+                  <div className="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
+                    <div
+                      className="h-full rounded-full transition-all"
+                      style={{
+                        width: `${data.smartClassification.expansionScore.value}%`,
+                        backgroundColor: getScoreColor(
+                          data.smartClassification.expansionScore.level
+                        ),
+                      }}
+                    ></div>
+                  </div>
                 </div>
-                <div className="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
-                  <div
-                    className="h-full rounded-full transition-all"
-                    style={{
-                      width: `${data.smartClassification.expansionScore.value}%`,
-                      backgroundColor: getScoreColor(data.smartClassification.expansionScore.level),
-                    }}
-                  ></div>
-                </div>
-              </div>
 
-              {/* Retention Score */}
-              <div className="col-span-2">
-                <div className="flex justify-between items-center mb-2">
-                  <p className="text-sm text-gray-400">Score de retenção</p>
-                  <span
-                    className="px-2 py-1 text-xs font-medium rounded"
-                    style={{
-                      backgroundColor: `${getScoreColor(data.smartClassification.retetionScore.level)}20`,
-                      color: getScoreColor(data.smartClassification.retetionScore.level),
-                    }}
-                  >
-                    {data.smartClassification.retetionScore.level}
-                  </span>
-                </div>
-                <div className="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
-                  <div
-                    className="h-full rounded-full transition-all"
-                    style={{
-                      width: `${data.smartClassification.retetionScore.value}%`,
-                      backgroundColor: getScoreColor(data.smartClassification.retetionScore.level),
-                    }}
-                  ></div>
+                {/* Retention Score */}
+                <div className="col-span-2">
+                  <div className="flex gap-2 items-center mb-2">
+                    <p className="text-sm text-gray-400">Score de retenção</p>
+                    <span
+                      className="px-2 py-1 text-xs font-medium rounded"
+                      style={{
+                        backgroundColor: `${getScoreColor(data.smartClassification.retetionScore.level)}20`,
+                        color: getScoreColor(data.smartClassification.retetionScore.level),
+                      }}
+                    >
+                      {data.smartClassification.retetionScore.level}
+                    </span>
+                  </div>
+                  <div className="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
+                    <div
+                      className="h-full rounded-full transition-all"
+                      style={{
+                        width: `${data.smartClassification.retetionScore.value}%`,
+                        backgroundColor: getScoreColor(
+                          data.smartClassification.retetionScore.level
+                        ),
+                      }}
+                    ></div>
+                  </div>
                 </div>
               </div>
             </div>
