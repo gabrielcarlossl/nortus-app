@@ -1,7 +1,9 @@
 'use client';
 
+import { useState } from 'react';
 import { Bell, Search, User, Globe } from 'lucide-react';
 import { useAppSelector } from '@/store/hooks';
+import NotificationsModal from '@/components/modals/NotificationsModal';
 
 /**
  * @description Componente Header
@@ -9,6 +11,7 @@ import { useAppSelector } from '@/store/hooks';
  */
 export function Header() {
   const { user } = useAppSelector(state => state.auth);
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
 
   return (
     <header className="fixed top-0 right-0 left-0 lg:left-64 h-16 bg-[#1a2332] border-b border-gray-800 z-30">
@@ -27,12 +30,15 @@ export function Header() {
           </button>
 
           {/* Language Selector */}
-          <button className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-[#0f1629] transition-colors">
+          <button className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-[#0f1629] transition-colors cursor-pointer">
             <Globe size={20} />
           </button>
 
           {/* Notifications */}
-          <button className="relative p-2 rounded-lg text-gray-400 hover:text-white hover:bg-[#0f1629] transition-colors">
+          <button
+            onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}
+            className="relative p-2 rounded-lg text-gray-400 hover:text-white hover:bg-[#0f1629] transition-colors cursor-pointer"
+          >
             <Bell size={20} />
             <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
           </button>
@@ -55,6 +61,12 @@ export function Header() {
           </button>
         </div>
       </div>
+
+      {/* Notifications Modal */}
+      <NotificationsModal
+        isOpen={isNotificationsOpen}
+        onClose={() => setIsNotificationsOpen(false)}
+      />
     </header>
   );
 }
