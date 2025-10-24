@@ -66,3 +66,61 @@ export interface AdditionalCoverage {
   price: number;
   enabled: boolean;
 }
+
+/**
+ * @description Tipos para a Visão 360 do Cliente
+ */
+export interface ClientProduct {
+  name: string;
+  value: number;
+  status: 'Ativo' | 'Inativo';
+}
+
+export interface CapturedPhrase {
+  phrase: string;
+  serviceDate: string;
+}
+
+export interface AppAction {
+  action: string;
+  pageTime?: string;
+  accessed: string;
+}
+
+export interface SmartClassification {
+  segment: string;
+  lifeTimeValue: number;
+  churnProbability: number;
+  expansionScore: {
+    level: string;
+    value: number;
+  };
+  retetionScore: {
+    level: string;
+    value: number;
+  };
+}
+
+export interface IASuggestion {
+  offer: string;
+  value: number;
+  conversionProbability: number;
+  reasonsWhy: string[];
+}
+
+export interface Client360Data {
+  client: {
+    name: string;
+    clientType: string;
+  };
+  produtos: ClientProduct[];
+  profile: string[];
+  capturedPhrases: CapturedPhrase[];
+  appActions: AppAction[];
+  smartClassification: SmartClassification;
+  sugestionsIA: {
+    NBO: IASuggestion;
+    NBA: IASuggestion;
+    NBX: IASuggestion;
+  };
+}
