@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Bell, Search, User, Globe } from 'lucide-react';
 import { useAppSelector } from '@/store/hooks';
 import NotificationsModal from '@/components/modals/NotificationsModal';
+import LanguageSelector from '@/components/modals/LanguageSelector';
 
 /**
  * @description Componente Header
@@ -12,6 +13,7 @@ import NotificationsModal from '@/components/modals/NotificationsModal';
 export function Header() {
   const { user } = useAppSelector(state => state.auth);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+  const [isLanguageSelectorOpen, setIsLanguageSelectorOpen] = useState(false);
 
   return (
     <header className="fixed top-0 right-0 left-0 lg:left-64 h-16 bg-[#1a2332] border-b border-gray-800 z-30">
@@ -30,7 +32,10 @@ export function Header() {
           </button>
 
           {/* Language Selector */}
-          <button className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-[#0f1629] transition-colors cursor-pointer">
+          <button
+            onClick={() => setIsLanguageSelectorOpen(!isLanguageSelectorOpen)}
+            className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-[#0f1629] transition-colors cursor-pointer"
+          >
             <Globe size={20} />
           </button>
 
@@ -66,6 +71,12 @@ export function Header() {
       <NotificationsModal
         isOpen={isNotificationsOpen}
         onClose={() => setIsNotificationsOpen(false)}
+      />
+
+      {/* Language Selector */}
+      <LanguageSelector
+        isOpen={isLanguageSelectorOpen}
+        onClose={() => setIsLanguageSelectorOpen(false)}
       />
     </header>
   );
