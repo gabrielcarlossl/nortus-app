@@ -38,7 +38,7 @@ Plataforma de inteligência artificial para times de vendas e atendimento que ut
 
 - **Axios** - Cliente HTTP para requisições
 
-- **API Mockada** - Endpoints S3 da Loomi
+- **API Mockada** - Endpoints S3 da nortus
 
 ### UI/UX
 
@@ -65,7 +65,7 @@ Plataforma de inteligência artificial para times de vendas e atendimento que ut
 ## 📁 Estrutura do Projeto
 
 ```bash
-loomi/
+nortus/
 ├── src/
 │   ├── app/                    # App Router do Next.js
 │   │   ├── dashboard/          # Páginas do dashboard
@@ -161,7 +161,7 @@ loomi/
 
 ```bash
 git clone <url-do-repositorio>
-cd loomi
+cd nortus
 ```
 
 2. Instale as dependências
@@ -262,7 +262,7 @@ Para realizar login, use qualquer email válido e senha com no mínimo 6 caracte
 **Endpoint de Login:**
 
 ```
-GET https://loomi.s3.us-east-1.amazonaws.com/mock-api-json/v2/login.json
+GET https://nortus.s3.us-east-1.amazonaws.com/mock-api-json/v2/login.json
 ```
 
 **Resposta:**

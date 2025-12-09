@@ -5,7 +5,7 @@
 import { Client360Data } from '@/types';
 
 const CLIENT_360_API_URL =
-  'https://loomi.s3.us-east-1.amazonaws.com/mock-api-json/v2/360-view.json';
+  'https://nortus.s3.us-east-1.amazonaws.com/mock-api-json/v2/360-view.json';
 
 /**
  * Busca dados da visão 360 do cliente

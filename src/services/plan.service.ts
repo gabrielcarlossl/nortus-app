@@ -4,7 +4,7 @@
 
 import { PlanData } from '@/types';
 
-const PLAN_API_URL = 'https://loomi.s3.us-east-1.amazonaws.com/mock-api-json/v2/plan.json';
+const PLAN_API_URL = 'https://nortus.s3.us-east-1.amazonaws.com/mock-api-json/v2/plan.json';
 
 /**
  * Busca dados dos planos

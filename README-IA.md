@@ -1,4 +1,4 @@
-# Uso de Inteligência Artificial no Projeto Loomi
+# Uso de Inteligência Artificial no Projeto nortus
 
 Este projeto foi desenvolvido com o apoio de ferramentas de Inteligência Artificial (IA), que aceleraram e aprimoraram diversas etapas do desenvolvimento. A IA foi utilizada para:
 

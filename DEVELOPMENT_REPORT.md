@@ -1,4 +1,4 @@
-# Relatório de Desenvolvimento - Projeto Nortus (Loomi)
+# Relatório de Desenvolvimento - Projeto Nortus (nortus)
 
 ---
 
@@ -342,8 +342,8 @@ const onSubmit = handleSubmit(data => {
 // Ideal: E2E completos
 test('user can login and view dashboard', async ({ page }) => {
   await page.goto('/login');
-  await page.fill('input[name="email"]', 'admin@loomi.com.br');
-  await page.fill('input[name="password"]', 'loomi2024');
+  await page.fill('input[name="email"]', 'admin@nortus.com.br');
+  await page.fill('input[name="password"]', 'nortus2024');
   await page.click('button[type="submit"]');
 
   await expect(page).toHaveURL('/dashboard');

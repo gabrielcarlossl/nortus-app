@@ -3,7 +3,7 @@ import { API_BASE_URL } from '@/constants';
 
 /**
  * @description Instância configurada do Axios
- * Base URL: API mockada da Loomi
+ * Base URL: API mockada da nortus
  * Timeout: 10 segundos
  */
 const apiClient = axios.create({

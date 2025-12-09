@@ -4,7 +4,7 @@
 
 import { MapData } from '@/types';
 
-const MAP_API_URL = 'https://loomi.s3.us-east-1.amazonaws.com/mock-api-json/v2/map.json';
+const MAP_API_URL = 'https://nortus.s3.us-east-1.amazonaws.com/mock-api-json/v2/map.json';
 
 /**
  * Busca os dados de localização do mapa

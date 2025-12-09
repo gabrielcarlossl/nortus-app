@@ -25,7 +25,7 @@ import Client360Skeleton from '@/components/loading/Client360Skeleton';
  * - Cards de upgrade de seguros
  *
  * @api_endpoint
- * - URL: https://loomi.s3.us-east-1.amazonaws.com/mock-api-json/v2/360-view.json
+ * - URL: https://nortus.s3.us-east-1.amazonaws.com/mock-api-json/v2/360-view.json
  *
  */
 export default function Client360Page() {

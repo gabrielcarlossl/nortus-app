@@ -76,7 +76,7 @@ import SimulatorSkeleton from '@/components/modals/SimulatorSkeleton';
  *        - TOTAL = 343.57 + 50.00 + 70.00 + 40.00 = R$ 503,57
  *
  * @api_endpoint
- * - URL: https://loomi.s3.us-east-1.amazonaws.com/mock-api-json/v2/plan.json
+ * - URL: https://nortus.s3.us-east-1.amazonaws.com/mock-api-json/v2/plan.json
  * - Retorna: { includedBenefits: string[], plansIndicators: PlanIndicator[] }
  *
  * @performance_indicators

@@ -53,7 +53,7 @@ export interface DashboardData {
   };
 }
 
-const DASHBOARD_API_URL = 'https://loomi.s3.us-east-1.amazonaws.com/mock-api-json/v2/dash.json';
+const DASHBOARD_API_URL = 'https://nortus.s3.us-east-1.amazonaws.com/mock-api-json/v2/dash.json';
 
 /**
  * Busca os dados do dashboard

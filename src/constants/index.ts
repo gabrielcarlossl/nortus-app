@@ -4,7 +4,7 @@
 
 export const APP_NAME = 'Nortus';
 
-export const API_BASE_URL = 'https://loomi.s3.us-east-1.amazonaws.com/mock-api-json/v2';
+export const API_BASE_URL = 'https://nortus.s3.us-east-1.amazonaws.com/mock-api-json/v2';
 
 export const ROUTES = {
   LOGIN: '/login',
